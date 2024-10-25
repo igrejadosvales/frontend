@@ -12,13 +12,10 @@ const config: Config = {
         background: "var(--background)",
         foreground: "var(--foreground)",
         colorBlue: "var(--color-blue)",
-<<<<<<< Updated upstream
         colorOrange:"var(--color-orange)",
         buttonColor: "var(--color-bege)",
-=======
         gradient: "var(--gradient-card)",
         footer: "var(--footer)",
->>>>>>> Stashed changes
       },
       spacing: {
         header: '36.813rem',
@@ -32,11 +29,8 @@ const config: Config = {
       },
       borderRadius: {
         borderDrink: '2rem',
-<<<<<<< Updated upstream
         borderButton: '1rem',
-=======
         borderCardGeracoes: '3.125rem',
->>>>>>> Stashed changes
       }
     },
     
