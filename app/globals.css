@@ -1,0 +1,76 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #FFFFF2;
+  --foreground: #c2c2c2;
+  --color-blue: #0084FF;
+  --color-orange: #FF6A00;
+  --color-bege: #9E9E9E;
+  --gradient-card: rgba(4, 4, 4, 0.764);
+  --footer: #171717;
+}
+
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* TEXT ANIMATION */
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Fredoka&family=IBM+Plex+Mono:wght@100;400&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Instrument+Serif:ital@0;1&family=Josefin+Sans:ital@0;1&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Playfair+Display:ital@0;1&family=Prompt&family=Roboto+Mono:ital@0;1&display=swap');
+
+.change-text {
+  animation: fontChange 5s linear infinite;
+}
+
+@keyframes fontChange {
+  0% {
+    font-family: "Instrument Sans", sans-serif;
+    font-style:italic;
+  }
+  10% {
+    font-family: "IBM Plex Mono", monospace;
+  }
+  20% {
+    font-family: "Josefin Sans", sans-serif;
+    font-style:italic;
+  }
+  30% {
+    font-family: "Playfair Display", serif;
+    font-style:italic;
+  }
+  40% {
+    font-family: "Roboto Mono", monospace;
+  }
+  50% {
+    font-family: "Bebas Neue", sans-serif;
+    font-style:italic;
+  }
+  60% {
+    font-family: "Fredoka", sans-serif;
+    font-style:italic;
+  }
+  70% {
+    font-family: "Prompt", sans-serif;
+  }
+  80% {
+    font-family: "Roboto Mono", monospace;
+    font-style:italic;
+  }
+  90% {
+    font-family: "Libre Baskerville", system-ui;
+  }
+  100% {
+    font-family: "Instrument Sans", sans-serif;
+    font-style:italic;
+  }
+}
