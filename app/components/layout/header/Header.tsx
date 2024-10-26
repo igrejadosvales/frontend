@@ -7,9 +7,10 @@ export default function Header() {
           <Image width="120" height="120" src="icons/logoIVLS.svg" alt="logo" />
         </div>
         <div className="flex flex-col h-full justify-center items-center text-white">
-            <h1 className="text-8xl">Aqui é a sua
-            </h1>
-            <h2 className="text-8xl change-text mb-5"> casa</h2>
+          <div className="flex mb-8">
+            <h2 className="text-8xl w-[535px]">Aqui é a sua</h2>
+            <span className="text-8xl change-text ml-1 w-[200px]">casa</span>
+          </div>
           <a href="#"><button className="border p-4 rounded-lg">celebrações</button></a>
         </div>
       </header>

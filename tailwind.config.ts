@@ -25,7 +25,7 @@ const config: Config = {
       },
       backgroundImage: {
         'background-header': "url('/global/background-header.webp')",
-        'background-music': "url('/global/music.webp')",
+        'background-music': "url('/global/ivales_music.png')",
       },
       borderRadius: {
         borderDrink: '2rem',
