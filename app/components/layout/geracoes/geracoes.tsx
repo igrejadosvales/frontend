@@ -1,8 +1,7 @@
 // Import Swiper React components
 'use client'
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { register } from 'swiper/element/bundle';
-register();
+
 
 // Import Swiper styles
 import 'swiper/css';
@@ -42,22 +41,20 @@ export default function Geracoes() {
                 centeredSlidesBounds={true}
                 centerInsufficientSlides={true}
                 spaceBetween={50}
-                breakpoints={
-                    {
-                        640: {
-                          slidesPerView: 2,
-                          spaceBetween: 20,
-                        },
-                        768: {
-                          slidesPerView: 4,
-                          spaceBetween: 40,
-                        },
-                        1024: {
-                          slidesPerView: 5,
-                          spaceBetween: 50,
-                        },
-                      }
-                }
+                breakpoints={{
+                    640: {
+                      slidesPerView: 2,
+                      spaceBetween: 20,
+                    },
+                    768: {
+                      slidesPerView: 4,
+                      spaceBetween: 40,
+                    },
+                    1024: {
+                      slidesPerView: 5,
+                      spaceBetween: 50,
+                    },
+                  }}
                 >
                 {ministery.map( (item) => (
                     <SwiperSlide key={item.id} className='cursor-pointer bg-cover bg-center relative z-10 group rounded-borderCardGeracoes w-96' 
