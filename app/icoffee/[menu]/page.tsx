@@ -1,7 +1,6 @@
 
 import MenuCard from "../components/MenuCard";
 
-
 type Drink = {
     id: number
     title: string,
