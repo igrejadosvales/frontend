@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Header() {
     return ( 
@@ -11,7 +12,7 @@ export default function Header() {
             <h2 className="text-8xl w-[535px]">Aqui é a sua</h2>
             <span className="text-8xl change-text ml-1 w-[200px]">casa</span>
           </div>
-          <a href="#"><button className="border p-4 rounded-lg">celebrações</button></a>
+          <Link href={'https://www.instagram.com/ivalesonline'} target="_blank"><button className="border p-4 rounded-lg">celebrações</button></Link>
         </div>
       </header>
     );
