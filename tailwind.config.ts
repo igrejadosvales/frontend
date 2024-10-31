@@ -16,6 +16,7 @@ const config: Config = {
         buttonColor: "var(--color-bege)",
         gradient: "var(--gradient-card)",
         footer: "var(--footer)",
+        textIcoffee: "var(--text-icoffee)",
       },
       spacing: {
         header: '36.813rem',

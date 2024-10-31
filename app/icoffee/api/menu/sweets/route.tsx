@@ -2,7 +2,7 @@ export async function GET() {
   const drinks = [
     {
       id: 1,
-      title: 'Matheus',
+      title: 'TESTE DOCES',
       subtitle: 'Tradicional',
       price: "R$ 12,00",
       backgroundColor: '#FFE6D4',
