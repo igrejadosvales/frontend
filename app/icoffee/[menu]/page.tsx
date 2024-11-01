@@ -1,4 +1,3 @@
-
 import MenuCard from "../components/MenuCard";
 
 type Drink = {
@@ -13,7 +12,7 @@ type Drink = {
 export default async function Page({ params }: { params: { menu: string }}) {
     const res = await fetch(`http://localhost:3000/icoffee/api/menu/${params.menu}`);
     const data = await res.json()
-
+    
     return ( 
         <div>
             {
@@ -31,4 +30,5 @@ export default async function Page({ params }: { params: { menu: string }}) {
         </div>
     );
   }
+
   
