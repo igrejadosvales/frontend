@@ -9,7 +9,7 @@ export default function HowWeMove() {
         <div className="flex mb-6 justify-between w-full flex-wrap max-lg:justify-center max-lg:gap-5">
             <Card 
                 title="No Templo" 
-                description="Nossas celebrações ocorrem todos os domingos às 10h, 17h e 19h30 (transmissão online às 19h30), e nas quartas-feiras às 20h (transmissão online) na Rua Santa Clara, 192. Acompanhe as celebrações online, pelo nosso canal do Youtube."
+                description="Nossas celebrações ocorrem todos os domingos às 10h, 18h e 20h (transmissão online às 20h), e nas quartas-feiras às 20h (transmissão online) na Rua Santa Clara, 192. Acompanhe as celebrações online, pelo nosso canal do Youtube."
             />
 
             <Card 
