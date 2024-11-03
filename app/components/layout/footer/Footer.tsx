@@ -12,7 +12,7 @@ export default function Footer() {
           </div>
           <div>
             <h4 className="font-bold">Domingos</h4>
-            <p className="text-sm">Cultos às 10:00, 17:00 e às 19:30 horas.</p>
+            <p className="text-sm">Cultos às 10:00, 18:00 e às 20:00 horas.</p>
           </div>
           <div>
             <h4 className="font-bold">Quartas</h4>
