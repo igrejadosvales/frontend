@@ -22,7 +22,7 @@ export default function HowWeMove() {
                 description="Servimos nossa cidade levando o caráter de Cristo em todas as esferas da sociedade."
             />
         </div>
-        <a href="#"><button className="py-3 border border-colorBlue px-24 rounded-lg text-colorBlue font-semibold hover:bg-colorBlue hover:text-background duration-300 max-[360px]:px-16 max-[360px]:w-full">venha nos visitar</button></a>
+        <a href="https://maps.app.goo.gl/tr8g8zPaPUdf2zme6" target="_blank"><button className="py-3 border border-colorBlue px-24 rounded-lg text-colorBlue font-semibold hover:bg-colorBlue hover:text-background duration-300 max-[360px]:px-16 max-[360px]:w-full">venha nos visitar</button></a>
       </section>
     );
   }
