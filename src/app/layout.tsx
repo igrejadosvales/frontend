@@ -15,8 +15,17 @@ export const metadata: Metadata = {
     default: "Igreja dos Vales",
     template: "%s | Igreja dos Vales",
   },
-  description: "Uma igreja de fé, esperança e amor. Junte-se a nós nos cultos e pequenos grupos.",
-  keywords: ["Igreja", "Fé", "Vales", "Culto", "Cristão", "Comunidade"],
+  description: "Bem-vindo à Igreja dos Vales. Uma comunidade de fé vibrante em Gravataí e Porto Alegre. Junte-se a nós para cultos, louvor e pequenos grupos.",
+  keywords: [
+    "Igreja",
+    "Igreja em Gravataí",
+    "Igreja em Porto Alegre",
+    "Igreja Evangélica",
+    "Cultos",
+    "Família",
+    "Fé",
+    "Igreja dos Vales"
+  ],
   authors: [{ name: "Igreja dos Vales" }],
   creator: "Igreja dos Vales",
   openGraph: {
@@ -49,6 +58,38 @@ export default function RootLayout({
       <body
         className={`${dmSans.variable} antialiased min-h-screen flex flex-col`}
       >
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@graph": [
+                {
+                  "@type": "WebSite",
+                  "name": "Igreja dos Vales",
+                  "url": "https://igrejadosvales.com.br",
+                  "potentialAction": {
+                    "@type": "SearchAction",
+                    "target": "https://igrejadosvales.com.br/busca?q={search_term_string}",
+                    "query-input": "required name=search_term_string"
+                  }
+                },
+                {
+                  "@type": "SiteNavigationElement",
+                  "name": ["Início", "Sobre Nós", "Ministérios", "Eventos", "Pequenos Grupos", "Contato"],
+                  "url": [
+                    "https://igrejadosvales.com.br",
+                    "https://igrejadosvales.com.br/sobre",
+                    "https://igrejadosvales.com.br/ministerios",
+                    "https://igrejadosvales.com.br/eventos",
+                    "https://igrejadosvales.com.br/pequenos-grupos",
+                    "https://igrejadosvales.com.br/contato"
+                  ]
+                }
+              ]
+            }),
+          }}
+        />
         <Header />
         <main className="flex-1">
           {children}
