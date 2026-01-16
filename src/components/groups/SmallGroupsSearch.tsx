@@ -26,11 +26,11 @@ export default function SmallGroupsSearch() {
 
   const filteredGroups = useMemo(() => {
     return SMALL_GROUPS.filter((group) => {
-      const matchesSearch = 
+      const matchesSearch =
         group.name.toLowerCase().includes(search.toLowerCase()) ||
         group.neighborhood.toLowerCase().includes(search.toLowerCase()) ||
         group.leader.toLowerCase().includes(search.toLowerCase())
-      
+
       const matchesDay = selectedDay === "Todos" || group.day === selectedDay
 
       return matchesSearch && matchesDay
@@ -41,9 +41,9 @@ export default function SmallGroupsSearch() {
     <div className="flex flex-col md:flex-row h-[calc(100vh-64px)] overflow-hidden">
       {/* Sidebar */}
       <div className="w-full md:w-96 border-r bg-background flex flex-col h-full z-10">
-        <div className="p-4 border-b space-y-4">
+        <div className="p-4 space-y-4">
           <h2 className="text-xl font-bold">Pequenos Grupos</h2>
-          
+
           <div className="relative">
             <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
             <Input
@@ -60,9 +60,9 @@ export default function SmallGroupsSearch() {
                 key={day}
                 onClick={() => setSelectedDay(day)}
                 className={cn(
-                  "px-3 py-1 rounded-full text-xs font-medium border transition-colors",
+                  "px-3 py-1 rounded-full text-xs font-medium transition-colors",
                   selectedDay === day
-                    ? "bg-primary text-primary-foreground border-primary"
+                    ? "bg-primary text-primary-foreground"
                     : "bg-background hover:bg-muted"
                 )}
               >
@@ -72,14 +72,14 @@ export default function SmallGroupsSearch() {
           </div>
         </div>
 
-        <div className="flex-1 overflow-y-auto">
+        <div className="flex-1 overflow-y-auto px-4">
           {filteredGroups.length > 0 ? (
-            <div className="divide-y">
+            <div>
               {filteredGroups.map((group) => (
                 <div
                   key={group.id}
                   className={cn(
-                    "p-4 cursor-pointer transition-colors hover:bg-muted/50",
+                    "p-4 cursor-pointer rounded-md transition-colors hover:bg-muted/50",
                     selectedGroup?.id === group.id && "bg-muted"
                   )}
                   onClick={() => setSelectedGroup(group)}

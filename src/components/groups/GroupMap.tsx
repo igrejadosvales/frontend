@@ -16,7 +16,11 @@ const icon = L.icon({
 
 function ChangeView({ center }: { center: [number, number] }) {
   const map = useMap()
-  map.setView(center, 13)
+
+  useEffect(() => {
+    map.setView(center, 13)
+  }, [center, map])
+
   return null
 }
 
@@ -34,6 +38,7 @@ export default function GroupMap({ groups, selectedGroup }: GroupMapProps) {
   useEffect(() => {
     if (selectedGroup) {
       const marker = markersRef.current[selectedGroup.id]
+      // Check if marker exists and is attached to a map
       if (marker) {
         marker.openPopup()
       }
@@ -59,7 +64,12 @@ export default function GroupMap({ groups, selectedGroup }: GroupMapProps) {
             position={group.coordinates}
             icon={icon}
             ref={(ref) => {
-              if (ref) markersRef.current[group.id] = ref
+              if (ref) {
+                markersRef.current[group.id] = ref
+              } else {
+                // Cleanup ref when marker unmounts
+                delete markersRef.current[group.id]
+              }
             }}
           >
             <Popup>
