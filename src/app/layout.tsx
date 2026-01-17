@@ -15,7 +15,8 @@ export const metadata: Metadata = {
     default: "Igreja dos Vales",
     template: "%s | Igreja dos Vales",
   },
-  description: "Bem-vindo à Igreja dos Vales. Uma comunidade de fé vibrante em Gravataí e Porto Alegre. Junte-se a nós para cultos, louvor e pequenos grupos.",
+  description:
+    "Bem-vindo à Igreja dos Vales. Uma comunidade de fé vibrante em Gravataí e Porto Alegre. Junte-se a nós para cultos, louvor e pequenos grupos.",
   keywords: [
     "Igreja",
     "Igreja em Gravataí",
@@ -24,7 +25,7 @@ export const metadata: Metadata = {
     "Cultos",
     "Família",
     "Fé",
-    "Igreja dos Vales"
+    "Igreja dos Vales",
   ],
   authors: [{ name: "Igreja dos Vales" }],
   creator: "Igreja dos Vales",
@@ -33,13 +34,15 @@ export const metadata: Metadata = {
     locale: "pt_BR",
     url: "https://igrejadosvales.com.br", // Replace with actual URL
     title: "Igreja dos Vales",
-    description: "Uma igreja de fé, esperança e amor. Junte-se a nós nos cultos e pequenos grupos.",
+    description:
+      "Uma igreja de fé, esperança e amor. Junte-se a nós nos cultos e pequenos grupos.",
     siteName: "Igreja dos Vales",
   },
   twitter: {
     card: "summary_large_image",
     title: "Igreja dos Vales",
-    description: "Uma igreja de fé, esperança e amor. Junte-se a nós nos cultos e pequenos grupos.",
+    description:
+      "Uma igreja de fé, esperança e amor. Junte-se a nós nos cultos e pequenos grupos.",
     creator: "@igrejadosvales",
   },
   robots: {
@@ -66,34 +69,40 @@ export default function RootLayout({
               "@graph": [
                 {
                   "@type": "WebSite",
-                  "name": "Igreja dos Vales",
-                  "url": "https://igrejadosvales.com.br",
-                  "potentialAction": {
+                  name: "Igreja dos Vales",
+                  url: "https://igrejadosvales.com.br",
+                  potentialAction: {
                     "@type": "SearchAction",
-                    "target": "https://igrejadosvales.com.br/busca?q={search_term_string}",
-                    "query-input": "required name=search_term_string"
-                  }
+                    target:
+                      "https://igrejadosvales.com.br/busca?q={search_term_string}",
+                    "query-input": "required name=search_term_string",
+                  },
                 },
                 {
                   "@type": "SiteNavigationElement",
-                  "name": ["Início", "Sobre Nós", "Ministérios", "Eventos", "Pequenos Grupos", "Contato"],
-                  "url": [
+                  name: [
+                    "Início",
+                    "Sobre Nós",
+                    "Ministérios",
+                    "Eventos",
+                    "Pequenos Grupos",
+                    "Contato",
+                  ],
+                  url: [
                     "https://igrejadosvales.com.br",
                     "https://igrejadosvales.com.br/sobre",
                     "https://igrejadosvales.com.br/ministerios",
                     "https://igrejadosvales.com.br/eventos",
                     "https://igrejadosvales.com.br/pequenos-grupos",
-                    "https://igrejadosvales.com.br/contato"
-                  ]
-                }
-              ]
+                    "https://igrejadosvales.com.br/contato",
+                  ],
+                },
+              ],
             }),
           }}
         />
         <Header />
-        <main className="flex-1">
-          {children}
-        </main>
+        <main className="flex-1">{children}</main>
         <Footer />
       </body>
     </html>
