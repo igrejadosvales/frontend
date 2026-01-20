@@ -32,6 +32,14 @@
   --ring: 25 98% 51%;
 
   --radius: 0.5rem;
+
+  --gray-150: #b8b8b8;
+  --gray-180: #ffffffb3;
+  --gray-250: #919191;
+  --gray-350: #696969;
+  --gray-450: #404040;
+  --gray-550: #2d2d2d;
+  --gray-600: #202020;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -63,6 +71,14 @@
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
     --ring: 25 98% 51%;
+
+    --gray-100: #b8b8b8;
+    --gray-180: #ffffffb3;
+    --gray-200: #919191;
+    --gray-300: #696969;
+    --gray-400: #404040;
+    --gray-500: #2d2d2d;
+    --gray-600: #202020;
   }
 }
 
@@ -100,6 +116,14 @@
   --radius-lg: calc(var(--radius) + 2px);
 
   --font-sans: var(--font-dm-sans);
+
+  --gray-100: hsl(var(--gray-100));
+  --gray-180: hsl(var(--gray-180));
+  --gray-200: hsl(var(--gray-200));
+  --gray-300: hsl(var(--gray-300));
+  --gray-400: hsl(var(--gray-400));
+  --gray-500: hsl(var(--gray-500));
+  --gray-600: hsl(var(--gray-600));
 }
 
 body {
@@ -107,4 +131,40 @@ body {
   font-family: var(--font-sans), Arial, Helvetica, sans-serif;
   user-select: none !important;
   background-image: none !important;
+}
+
+/* Custom Scrollbar */
+/* Scoped Custom Scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #fc7703;
+  /* Primary Orange */
+  border-radius: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #e66d02;
+}
+
+/* For Firefox */
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #fc7703 transparent;
+}
+
+/* Prevent auto-fill from changing background color */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-transition: background-color 5000s ease-in-out 0s;
+  transition: background-color 5000s ease-in-out 0s;
+  -webkit-text-fill-color: white !important;
 }
