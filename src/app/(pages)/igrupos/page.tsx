@@ -7,7 +7,7 @@ export const metadata = {
 
 export default function PequenosGruposPage() {
   return (
-    <main className="w-full h-full bg-background">
+    <main className="w-full h-full bg-[#121212]">
       <SmallGroupsSearch />
     </main>
   )
