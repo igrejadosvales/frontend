@@ -23,84 +23,83 @@ export function Header() {
 
   const navItems = [
     { name: "Início", href: "/" },
-    { name: "Sobre Nós", href: "/sobre" },
-    { name: "Ministérios", href: "/ministerios" },
+    { name: "iGrupos", href: "/igrupos" },
     { name: "Voluntariado", href: "/voluntarios" },
-    { name: "Eventos", href: "/eventos" },
-    { name: "Contato", href: "/contato" },
   ];
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-black backdrop-blur supports-backdrop-filter:bg-black/60">
-      <div className="container mx-auto flex h-16 items-center justify-between px-4 md:px-6">
-        <Link href="/" className="flex items-center space-x-2">
-          <span className="text-xl font-bold tracking-tight">
-            Igreja dos Vales
-          </span>
-        </Link>
+    <>
+      <header className="sticky top-0 z-40 w-full border-b bg-black backdrop-blur supports-backdrop-filter:bg-black/60">
+        <div className="w-full flex h-16 items-center justify-between px-4 md:px-6">
+          <Link href="/">
+            <span className="text-xl font-bold tracking-tight">
+              Igreja dos Vales
+            </span>
+          </Link>
 
-        {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center gap-6">
-          {navItems.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="text-sm font-medium transition-colors hover:text-primary"
-            >
-              {item.name}
-            </Link>
-          ))}
-          <Button>Doar Agora</Button>
-        </nav>
+          {/* Desktop Nav */}
+          <nav className="hidden md:flex items-center gap-6">
+            {navItems.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="text-sm font-medium transition-colors hover:text-primary"
+              >
+                {item.name}
+              </Link>
+            ))}
+            <Button>Doar Agora</Button>
+          </nav>
 
-        {/* Mobile Menu Button */}
-        <button
-          className="md:hidden p-2 text-foreground"
-          onClick={() => setIsMenuOpen(true)}
-          aria-label="Open menu"
-        >
-          <Menu className="h-6 w-6" />
-        </button>
-      </div>
+          {/* Mobile Menu Button */}
+          <button
+            className="md:hidden p-2 text-foreground"
+            onClick={() => setIsMenuOpen(true)}
+            aria-label="Open menu"
+          >
+            <Menu className="h-6 w-6" />
+          </button>
+        </div>
+      </header>
 
       {/* Full Screen Mobile Menu */}
       <div
         className={cn(
-          "fixed inset-0 z-50 bg-background md:hidden transition-transform duration-300 ease-in-out",
+          "fixed inset-0 z-999 w-full h-full bg-[#121212] backdrop-blur supports-backdrop-filter:bg-black/60 md:hidden transition-transform duration-300 ease-in-out",
           isMenuOpen ? "translate-x-0" : "translate-x-full",
         )}
       >
-        <div className="container mx-auto h-full flex flex-col p-4">
+        <div className=" mx-auto h-full flex flex-col p-4">
           <div className="flex items-center justify-between h-16">
             <span className="text-xl font-bold tracking-tight">
               Igreja dos Vales
             </span>
             <button
-              className="p-2 text-foreground"
+              className="text-foreground"
               onClick={() => setIsMenuOpen(false)}
               aria-label="Close menu"
             >
-              <X className="h-6 w-6" />
+              <X className="h-8 w-8" />
             </button>
           </div>
 
-          <nav className="flex flex-col items-center justify-center space-y-8 flex-1">
+          <nav className="flex flex-col items-end justify-center gap-3 w-full mt-5">
             {navItems.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
-                className="text-2xl font-medium transition-colors hover:text-primary"
+                className="text-2xl font-medium transition-colors hover:text-primary text-right w-full border-b-2 border-[#363636] pb-2"
                 onClick={() => setIsMenuOpen(false)}
               >
                 {item.name}
               </Link>
             ))}
-            <Button className="w-full max-w-xs mt-8" size="lg">
+            <Button className="w-auto px-10 py-5" size="sm">
               Doar Agora
             </Button>
           </nav>
         </div>
       </div>
-    </header>
+    </>
   );
 }
