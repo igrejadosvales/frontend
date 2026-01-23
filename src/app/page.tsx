@@ -1,5 +1,6 @@
 import { Hero } from "@/components/section/Hero";
 import { InfoCard } from "@/components/ui/info-card";
+import { FAQSection } from "@/components/section/Faq";
 import { HandHeart, Mail, Car } from "lucide-react";
 import Link from "next/link";
 
@@ -84,6 +85,8 @@ export default function Home() {
           />
         </div>
       </section>
+
+      <FAQSection />
     </div>
   );
 }
