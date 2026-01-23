@@ -1,6 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
+import { ArrowRight, Heart, Users, Sparkles, CheckCircle2, UserCheck, HandHeart } from "lucide-react";
 
 interface StepInitialProps {
   onSelectPath: (path: "existing" | "new") => void;
@@ -12,113 +13,136 @@ export default function StepInitial({
   onBack,
 }: StepInitialProps) {
   return (
-    <div className="min-h-screen bg-white">
-      {/* Hero Section */}
-      <div className="relative h-[50vh] sm:h-[60vh] md:h-[70vh] bg-gradient-to-br from-gray-900 to-gray-800 flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 bg-black/40"></div>
-        <div className="relative z-10 text-center px-4 sm:px-6 max-w-4xl mx-auto">
-          <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-4 sm:mb-6 leading-tight">
-            Use seus dons.
-            <br />
-            Faça parte do time.
-          </h1>
-          <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-200 mb-6 sm:mb-8 leading-relaxed">
-            Voluntariar-se é uma das melhores maneiras de se conectar. Deus lhe
-            deu talentos únicos para ajudar a construir Sua igreja.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button
+    <section className="min-h-screen bg-[#121212] text-white">
+      {/* Hero / Selection Section */}
+      <div className="relative min-h-[85vh] flex flex-col items-center justify-center overflow-hidden px-4 md:px-6 py-20">
+        {/* Background Gradients */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-7xl pointer-events-none opacity-20">
+          <div className="absolute top-[-20%] left-[20%] w-[500px] h-[500px] bg-primary rounded-full blur-[120px]" />
+          <div className="absolute bottom-[-10%] right-[20%] w-[400px] h-[400px] bg-blue-600 rounded-full blur-[100px]" />
+        </div>
+
+        <div className="relative z-10 flex flex-col items-center max-w-5xl mx-auto w-full text-center space-y-12">
+
+          <div className="space-y-6 animate-in fade-in slide-in-from-bottom-8 duration-700">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm text-sm font-medium text-gray-300">
+              <Sparkles className="w-4 h-4 text-primary" />
+              <span>Faça a diferença hoje</span>
+            </div>
+
+            <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-white leading-[1.1]">
+              Sirva com propósito, <br />
+              <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-orange-600">
+                transforme vidas.
+              </span>
+            </h1>
+
+            <p className="text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed">
+              Cada talento importa. Descubra onde você se encaixa e use seus dons para construir algo eterno.
+            </p>
+          </div>
+
+          {/* Action Cards */}
+          <div className="grid md:grid-cols-2 gap-6 w-full max-w-3xl mx-auto animate-in fade-in slide-in-from-bottom-12 duration-1000 delay-200">
+            {/* New Volunteer Card */}
+            <button
               onClick={() => onSelectPath("new")}
-              size="lg"
-              className="bg-[#fc7703] hover:bg-[#e66d02] text-white px-8 py-6 text-lg font-semibold rounded-lg shadow-xl"
+              className="cursor-pointer group relative flex flex-col items-start p-8 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/10 hover:border-primary/50 transition-all duration-300 text-left hover:-translate-y-1 hover:shadow-2xl hover:shadow-primary/10"
             >
-              Quero ser voluntário
-            </Button>
-            <Button
+              <div className="p-3 rounded-xl bg-primary/20 text-primary mb-6 group-hover:scale-110 transition-transform duration-300">
+                <HandHeart className="w-8 h-8" />
+              </div>
+              <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-primary transition-colors">
+                Quero ser voluntário
+              </h3>
+              <p className="text-gray-400 mb-8 grow">
+                Ainda não sirvo, mas quero descobrir meus dons e começar minha jornada.
+              </p>
+              <div className="flex items-center text-sm font-semibold text-white group-hover:text-primary transition-colors">
+                Começar agora <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+              </div>
+            </button>
+
+            {/* Existing Volunteer Card */}
+            <button
               onClick={() => onSelectPath("existing")}
-              variant="outline"
-              size="lg"
-              className="bg-white/10 border-white text-white hover:bg-white/20 px-8 py-6 text-lg font-semibold rounded-lg backdrop-blur-sm"
+              className="cursor-pointer group relative flex flex-col items-start p-8 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/10 hover:border-blue-500/50 transition-all duration-300 text-left hover:-translate-y-1 hover:shadow-2xl hover:shadow-blue-500/10"
             >
-              Já sou voluntário
-            </Button>
+              <div className="p-3 rounded-xl bg-blue-500/20 text-blue-400 mb-6 group-hover:scale-110 transition-transform duration-300">
+                <UserCheck className="w-8 h-8" />
+              </div>
+              <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-blue-400 transition-colors">
+                Já sou voluntário
+              </h3>
+              <p className="text-gray-400 mb-8 grow">
+                Já faço parte de uma equipe e quero acessar minha área ou ver escalas.
+              </p>
+              <div className="flex items-center text-sm font-semibold text-white group-hover:text-blue-400 transition-colors">
+                Acessar área <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+              </div>
+            </button>
           </div>
+
         </div>
       </div>
 
-      {/* Steps Section */}
-      <div className="max-w-6xl mx-auto py-12 sm:py-16 md:py-20 px-4 sm:px-6">
-        <div className="text-center mb-12 sm:mb-16">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-3 sm:mb-4">
-            Impacte outros e construa a igreja
-          </h2>
-          <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
-            Não podemos esperar para ver como Deus usará suas habilidades,
-            paixões e dons. Siga os passos simples abaixo para encontrar
-            oportunidades de voluntariado.
-          </p>
-        </div>
-
-        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
-          <div className="text-center space-y-3 sm:space-y-4">
-            <div className="w-14 h-14 sm:w-16 sm:h-16 bg-[#fc7703] rounded-full flex items-center justify-center text-white text-xl sm:text-2xl font-bold mx-auto">
-              1
-            </div>
-            <h3 className="text-xl sm:text-2xl font-bold text-gray-900">
-              Explore as áreas
-            </h3>
-            <p className="text-sm sm:text-base text-gray-600">
-              Saiba mais sobre as diferentes áreas e encontre uma que se alinhe
-              com seus dons únicos.
+      {/* Steps / Info Section */}
+      <div className="border-t border-white/5 bg-[#0f0f0f] py-24 px-4">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-16 space-y-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-white">Como funciona?</h2>
+            <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+              É simples fazer parte da família de voluntários. Siga a jornada.
             </p>
           </div>
 
-          <div className="text-center space-y-3 sm:space-y-4">
-            <div className="w-14 h-14 sm:w-16 sm:h-16 bg-[#fc7703] rounded-full flex items-center justify-center text-white text-xl sm:text-2xl font-bold mx-auto">
-              2
-            </div>
-            <h3 className="text-xl sm:text-2xl font-bold text-gray-900">
-              Cadastre-se
-            </h3>
-            <p className="text-sm sm:text-base text-gray-600">
-              Preencha suas informações e escolha as áreas onde você gostaria de
-              servir.
-            </p>
-          </div>
+          <div className="grid md:grid-cols-3 gap-12 relative">
 
-          <div className="text-center space-y-3 sm:space-y-4">
-            <div className="w-14 h-14 sm:w-16 sm:h-16 bg-[#fc7703] rounded-full flex items-center justify-center text-white text-xl sm:text-2xl font-bold mx-auto">
-              3
+            {/* Step 1 */}
+            <div className="relative flex flex-col items-center text-center space-y-4 group">
+              <div className="w-24 h-24 rounded-full bg-white/5 border border-white/10 flex items-center justify-center relative z-10 group-hover:border-primary/50 group-hover:bg-primary/10 transition-colors duration-300">
+                <Users className="w-10 h-10 text-gray-300 group-hover:text-primary transition-colors" />
+                <div className="absolute -top-3 -right-3 w-8 h-8 rounded-full bg-[#1a1a1a] border border-white/10 flex items-center justify-center text-xs font-bold text-gray-500">
+                  1
+                </div>
+              </div>
+              <h3 className="text-xl font-bold text-white">Conheça as Áreas</h3>
+              <p className="text-gray-400 leading-relaxed">
+                Explore os ministérios e encontre aquele que faz seu coração bater mais forte.
+              </p>
             </div>
-            <h3 className="text-xl sm:text-2xl font-bold text-gray-900">
-              Comece a servir
-            </h3>
-            <p className="text-sm sm:text-base text-gray-600">
-              Veja Deus trabalhar através de seus dons para causar um impacto
-              duradouro em outros.
-            </p>
-          </div>
-        </div>
-      </div>
 
-      {/* CTA Section */}
-      <div className="bg-gray-50 py-12 sm:py-16 px-4 sm:px-6">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3 sm:mb-4">
-            Veja o que Deus pode fazer através de você.
-          </h2>
-          <p className="text-base sm:text-lg md:text-xl text-gray-600 mb-6 sm:mb-8">
-            Entre no seu propósito e faça parte da missão.
-          </p>
-          <Button
-            onClick={() => onSelectPath("new")}
-            size="lg"
-            className="bg-[#fc7703] hover:bg-[#e66d02] text-white px-12 py-6 text-lg font-semibold rounded-lg shadow-xl"
-          >
-            Começar agora
-          </Button>
+            {/* Step 2 */}
+            <div className="relative flex flex-col items-center text-center space-y-4 group">
+              <div className="w-24 h-24 rounded-full bg-white/5 border border-white/10 flex items-center justify-center relative z-10 group-hover:border-primary/50 group-hover:bg-primary/10 transition-colors duration-300">
+                <CheckCircle2 className="w-10 h-10 text-gray-300 group-hover:text-primary transition-colors" />
+                <div className="absolute -top-3 -right-3 w-8 h-8 rounded-full bg-[#1a1a1a] border border-white/10 flex items-center justify-center text-xs font-bold text-gray-500">
+                  2
+                </div>
+              </div>
+              <h3 className="text-xl font-bold text-white">Cadastre-se</h3>
+              <p className="text-gray-400 leading-relaxed">
+                Preencha seus dados e conte-nos um pouco sobre sua vontade de servir.
+              </p>
+            </div>
+
+            {/* Step 3 */}
+            <div className="relative flex flex-col items-center text-center space-y-4 group">
+              <div className="w-24 h-24 rounded-full bg-white/5 border border-white/10 flex items-center justify-center relative z-10 group-hover:border-primary/50 group-hover:bg-primary/10 transition-colors duration-300">
+                <Heart className="w-10 h-10 text-gray-300 group-hover:text-primary transition-colors" />
+                <div className="absolute -top-3 -right-3 w-8 h-8 rounded-full bg-[#1a1a1a] border border-white/10 flex items-center justify-center text-xs font-bold text-gray-500">
+                  3
+                </div>
+              </div>
+              <h3 className="text-xl font-bold text-white">Comece a Servir</h3>
+              <p className="text-gray-400 leading-relaxed">
+                Integre-se à equipe, receba treinamento e comece a impactar vidas.
+              </p>
+            </div>
+
+          </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }

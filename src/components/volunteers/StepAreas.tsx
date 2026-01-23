@@ -2,16 +2,19 @@
 
 import { useState } from "react";
 import {
-  People,
-  MusicNoteBeamed,
-  PersonFill,
-  Controller,
-  CameraVideo,
-  HandThumbsUp,
+  Users,
+  Music,
+  Baby,
+  Gamepad2,
+  Video,
+  HandHeart,
   Heart,
-  QuestionCircle,
+  HelpCircle,
   Clock,
-} from "react-bootstrap-icons";
+  Check,
+  ChevronLeft,
+  ArrowRight
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { volunteerAreas, VolunteerFormData } from "@/lib/mock-volunteers";
 
@@ -32,12 +35,12 @@ export default function StepAreas({
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
 
   const categories = [
-    { id: "all", name: "Todas", icon: People },
-    { id: "louvor", name: "Louvor", icon: MusicNoteBeamed },
-    { id: "criancas", name: "Crianças", icon: PersonFill },
-    { id: "jovens", name: "Jovens", icon: Controller },
-    { id: "midia", name: "Mídia", icon: CameraVideo },
-    { id: "recepcao", name: "Recepção", icon: HandThumbsUp },
+    { id: "all", name: "Todas", icon: Users },
+    { id: "louvor", name: "Louvor", icon: Music },
+    { id: "criancas", name: "Crianças", icon: Baby },
+    { id: "jovens", name: "Jovens", icon: Gamepad2 },
+    { id: "midia", name: "Mídia", icon: Video },
+    { id: "recepcao", name: "Recepção", icon: HandHeart },
     { id: "outros", name: "Outros", icon: Heart },
   ];
 
@@ -60,166 +63,167 @@ export default function StepAreas({
     }
   };
 
+  // Helper to map category/id to Lucide Icon dynamically
+  const getAreaIcon = (category: string) => {
+    switch (category) {
+      case "louvor": return <Music className="w-12 h-12" />;
+      case "criancas": return <Baby className="w-12 h-12" />;
+      case "jovens": return <Gamepad2 className="w-12 h-12" />;
+      case "midia": return <Video className="w-12 h-12" />;
+      case "recepcao": return <HandHeart className="w-12 h-12" />;
+      default: return <Heart className="w-12 h-12" />;
+    }
+  };
+
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-[#121212] flex flex-col">
       {/* Header Section */}
-      <div className="bg-gray-50 py-8 sm:py-12 md:py-16 px-4 sm:px-6">
-        <div className="max-w-6xl mx-auto">
-          <button
-            onClick={onBack}
-            className="text-gray-500 hover:text-[#fc7703] mb-6 sm:mb-8 flex items-center gap-2 text-sm font-medium"
-          >
-            ← Voltar
-          </button>
-          <div className="text-center space-y-3 sm:space-y-4">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900">
+      <div className="w-full max-w-6xl mx-auto py-12 px-4 sm:px-6 border-b border-white/5 bg-[#121212] backdrop-blur-md bg-opacity-90">
+        <div className="">
+          <div className="flex items-center justify-between mb-8">
+            <button
+              onClick={onBack}
+              className="self-start flex items-center gap-2 text-gray-400 hover:text-primary transition-colors group shrink-0 cursor-pointer"
+              title="Voltar"
+            >
+              <div className="p-2 rounded-full bg-white/5 group-hover:bg-primary/20 transition-colors">
+                <ChevronLeft className="w-5 h-5" />
+              </div>
+            </button>
+            <div className="text-right">
+              <span className="text-gray-500 text-sm block">Voluntário</span>
+              <span className="text-gray-300 font-bold">{formData.name}</span>
+            </div>
+          </div>
+
+          <div className="text-center space-y-4">
+            <h1 className="text-4xl md:text-5xl font-bold text-white tracking-tight">
               Encontre sua área
             </h1>
-            <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
-              Olá, <strong>{formData.name}</strong>! Descubra onde sua vocação
-              se encontra com as necessidades da nossa comunidade.
+            <p className="text-lg text-gray-400 max-w-2xl mx-auto">
+              Selecione os ministérios que mais combinam com você.
             </p>
+          </div>
+
+          {/* Filtro de Categorias */}
+          <div className="flex flex-wrap gap-3 justify-center mt-10">
+            {categories.map((category) => {
+              const Icon = category.icon;
+              const isActive = (category.id === "all" && !selectedCategory) || selectedCategory === category.id;
+              return (
+                <button
+                  key={category.id}
+                  onClick={() =>
+                    setSelectedCategory(
+                      category.id === "all" ? null : category.id,
+                    )
+                  }
+                  className={`px-4 py-2 rounded-full font-medium text-sm border transition-all flex items-center gap-2 cursor-pointer
+                  ${isActive
+                      ? "border-primary bg-primary text-white shadow-lg shadow-primary/20"
+                      : "border-white/10 bg-white/5 text-gray-400 hover:bg-white/10 hover:text-white hover:border-white/20"
+                    }`}
+                >
+                  <Icon className="w-4 h-4" />
+                  {category.name}
+                </button>
+              );
+            })}
           </div>
         </div>
       </div>
 
-      {/* Help Banner */}
-      <div className="bg-[#fc7703] text-white py-6 sm:py-8 px-4 sm:px-6">
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
-          <div className="text-center md:text-left">
-            <h3 className="text-xl sm:text-2xl font-bold mb-2">
-              Não sabe onde voluntariar?
-            </h3>
-            <p className="text-sm sm:text-base text-orange-100">
-              Nossa equipe pode te ajudar a descobrir onde seus dons se encaixam
-              melhor.
-            </p>
+      {/* Main Content Area */}
+      <div className="grow max-w-6xl mx-auto w-full px-4 sm:px-6 py-12">
+
+        {/* Help Banner */}
+        <div className="mb-12 rounded-2xl bg-linear-to-r from-orange-900/40 to-primary/20 border border-primary/20 p-6 flex flex-col md:flex-row items-center justify-between gap-6">
+          <div className="flex items-start gap-4">
+            <div className="p-3 rounded-full bg-primary/20 text-primary shrink-0">
+              <HelpCircle className="w-6 h-6" />
+            </div>
+            <div>
+              <h3 className="text-lg font-bold text-white mb-1">
+                Não sabe onde servir?
+              </h3>
+              <p className="text-gray-400 text-sm">
+                Nossa equipe pode te ajudar a descobrir onde seus dons se encaixam melhor.
+              </p>
+            </div>
           </div>
           <Button
             onClick={onNeedHelp}
-            size="lg"
-            className="bg-white text-[#fc7703] hover:bg-gray-100 font-semibold px-8 py-4 rounded-lg"
+            variant="secondary"
+            className="bg-white/10 hover:bg-white/20 text-white border-0"
           >
-            Preciso de Ajuda
+            Pedir orientação
           </Button>
         </div>
-      </div>
 
-      {/* Categories & Areas */}
-      <div className="max-w-6xl mx-auto py-8 sm:py-12 md:py-16 px-4 sm:px-6">
-        {/* Filtro de Categorias */}
-        <div className="flex flex-wrap gap-2 sm:gap-3 justify-center mb-8 sm:mb-10 md:mb-12">
-          {categories.map((category) => {
-            const Icon = category.icon;
-            return (
-              <button
-                key={category.id}
-                onClick={() =>
-                  setSelectedCategory(
-                    category.id === "all" ? null : category.id,
-                  )
-                }
-                className={`px-3 sm:px-4 md:px-5 py-2 rounded-full font-semibold text-xs sm:text-sm border-2 transition-all flex items-center gap-1 sm:gap-2
-                  ${
-                    (category.id === "all" && !selectedCategory) ||
-                    selectedCategory === category.id
-                      ? "border-[#fc7703] bg-[#fc7703] text-white"
-                      : "border-gray-300 bg-white text-gray-700 hover:border-[#fc7703]"
-                  }`}
-              >
-                <Icon className="inline-block w-4 h-4 sm:w-5 sm:h-5" />
-                {category.name}
-              </button>
-            );
-          })}
-        </div>
 
-        {/* Grid de Áreas - Estilo Elevation Church */}
-        <div className="space-y-4 sm:space-y-6 md:space-y-8">
+        {/* Grid de Áreas */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pb-20">
           {filteredAreas.map((area) => {
             const isSelected = selectedAreas.includes(area.id);
             return (
               <button
                 key={area.id}
                 onClick={() => toggleArea(area.id)}
-                className={`group relative w-full overflow-hidden rounded-2xl transition-all text-left bg-white border-2 hover:shadow-2xl
-                  ${isSelected ? "border-[#fc7703] shadow-xl" : "border-gray-200"}`}
+                className={`group relative w-full overflow-hidden rounded-2xl transition-all text-left border-2 cursor-pointer
+                  ${isSelected
+                    ? "bg-white/5 border-primary shadow-[0_0_30px_-5px_var(--color-primary)] shadow-primary/20 ring-1 ring-primary/50"
+                    : "bg-[#1a1a1a] border-white/5 hover:border-white/20 hover:bg-white/5"}`}
               >
-                <div className="md:flex">
-                  {/* Image Section */}
-                  <div className="md:w-2/5 bg-gradient-to-br from-gray-100 to-gray-200 p-8 sm:p-10 md:p-12 flex items-center justify-center relative overflow-hidden min-h-[200px] sm:min-h-[250px]">
-                    <div className="absolute inset-0 bg-[#fc7703]/5"></div>
-                    <div className="relative z-10">
-                      {(() => {
-                        switch (area.category) {
-                          case "louvor":
-                            return (
-                              <MusicNoteBeamed className="text-[#fc7703] w-16 h-16 sm:w-20 sm:h-20" />
-                            );
-                          case "criancas":
-                            return (
-                              <PersonFill className="text-[#fc7703] w-16 h-16 sm:w-20 sm:h-20" />
-                            );
-                          case "jovens":
-                            return (
-                              <Controller className="text-[#fc7703] w-16 h-16 sm:w-20 sm:h-20" />
-                            );
-                          case "midia":
-                            return (
-                              <CameraVideo className="text-[#fc7703] w-16 h-16 sm:w-20 sm:h-20" />
-                            );
-                          case "recepcao":
-                            return (
-                              <HandThumbsUp className="text-[#fc7703] w-16 h-16 sm:w-20 sm:h-20" />
-                            );
-                          case "outros":
-                            return (
-                              <Heart className="text-[#fc7703] w-16 h-16 sm:w-20 sm:h-20" />
-                            );
-                          default:
-                            return (
-                              <People className="text-[#fc7703] w-16 h-16 sm:w-20 sm:h-20" />
-                            );
-                        }
-                      })()}
+                <div className="md:flex h-full">
+                  {/* Icon Section */}
+                  <div className={`md:w-48 p-8 flex items-center justify-center relative overflow-hidden transition-colors duration-300
+                      ${isSelected ? "bg-primary/20 text-primary" : "bg-black/20 text-gray-500 group-hover:text-primary/70"}`}>
+
+                    <div className="relative z-10 transform group-hover:scale-110 transition-transform duration-500">
+                      {getAreaIcon(area.category)}
                     </div>
                     {isSelected && (
-                      <div className="absolute top-3 right-3 sm:top-4 sm:right-4 w-8 h-8 sm:w-10 sm:h-10 bg-[#fc7703] rounded-full flex items-center justify-center text-white text-base sm:text-lg font-bold shadow-lg">
-                        ✓
+                      <div className="absolute top-3 right-3 w-6 h-6 bg-primary rounded-full flex items-center justify-center text-white md:hidden">
+                        <Check className="w-4 h-4" />
                       </div>
                     )}
                   </div>
 
                   {/* Content Section */}
-                  <div className="md:w-3/5 p-4 sm:p-6 md:p-8">
-                    <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-2 sm:mb-3 group-hover:text-[#fc7703] transition-colors">
-                      {area.name}
-                    </h3>
-                    <p className="text-sm sm:text-base text-gray-600 mb-4 sm:mb-6 leading-relaxed">
+                  <div className="flex-1 p-6 md:p-8 flex flex-col justify-center">
+                    <div className="flex justify-between items-start mb-2">
+                      <h3 className={`text-2xl font-bold transition-colors ${isSelected ? "text-primary" : "text-white group-hover:text-primary"}`}>
+                        {area.name}
+                      </h3>
+                      {isSelected && (
+                        <div className="hidden md:flex items-center gap-2 text-primary font-bold text-sm bg-primary/10 px-3 py-1 rounded-full">
+                          <Check className="w-4 h-4" /> Selecionado
+                        </div>
+                      )}
+                    </div>
+
+                    <p className="text-gray-400 mb-6 leading-relaxed">
                       {area.description}
                     </p>
 
-                    {area.requiredSkills && area.requiredSkills.length > 0 && (
-                      <div className="mb-3 sm:mb-4">
-                        <p className="text-xs sm:text-sm font-semibold text-gray-700 mb-2">
-                          Habilidades desejadas:
-                        </p>
-                        <div className="flex flex-wrap gap-1.5 sm:gap-2">
+                    <div className="mt-auto space-y-4">
+                      {area.requiredSkills && area.requiredSkills.length > 0 && (
+                        <div className="flex flex-wrap gap-2">
                           {area.requiredSkills.map((skill) => (
                             <span
                               key={skill}
-                              className="text-xs sm:text-sm px-2 sm:px-3 py-1 bg-gray-100 rounded-full text-gray-700 font-medium"
+                              className="text-xs px-2.5 py-1 bg-white/5 border border-white/10 rounded-full text-gray-300 font-medium"
                             >
                               {skill}
                             </span>
                           ))}
                         </div>
-                      </div>
-                    )}
+                      )}
 
-                    <div className="text-xs sm:text-sm text-gray-500 flex items-center gap-1.5 sm:gap-2">
-                      <Clock className="text-[#fc7703] w-4 h-4" />
-                      {area.commitment}
+                      <div className="flex items-center gap-2 text-sm text-gray-500 pt-2 border-t border-white/5">
+                        <Clock className="w-4 h-4 text-primary" />
+                        <span>{area.commitment}</span>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -230,28 +234,26 @@ export default function StepAreas({
       </div>
 
       {/* Resumo e Botão de Envio */}
-      {selectedAreas.length > 0 && (
-        <div className="sticky bottom-0 bg-[#fc7703] text-white py-4 sm:py-5 md:py-6 px-4 sm:px-6 shadow-2xl">
-          <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-3 sm:gap-4">
-            <div className="text-center md:text-left">
-              <p className="text-xs sm:text-sm text-orange-100 mb-1">
-                Áreas selecionadas:
-              </p>
-              <p className="text-xl sm:text-2xl font-bold">
-                {selectedAreas.length}{" "}
-                {selectedAreas.length === 1 ? "área" : "áreas"}
-              </p>
-            </div>
-            <Button
-              onClick={handleSubmit}
-              size="lg"
-              className="bg-white text-[#fc7703] hover:bg-gray-100 px-8 sm:px-10 py-4 sm:py-6 text-base sm:text-lg font-bold rounded-lg shadow-xl w-full md:w-auto"
-            >
-              Finalizar Cadastro →
-            </Button>
+      <div className={`fixed bottom-0 left-0 right-0 bg-[#0a0a0a] border-t border-white/10 p-4 sm:px-8 py-6 transition-transform duration-300 z-50 ${selectedAreas.length > 0 ? "translate-y-0" : "translate-y-full"}`}>
+        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+          <div className="text-center md:text-left">
+            <p className="text-gray-400 text-sm mb-1">
+              Você selecionou:
+            </p>
+            <p className="text-2xl font-bold text-white">
+              {selectedAreas.length}{" "}
+              <span className="text-primary">{selectedAreas.length === 1 ? "opção" : "opções"}</span>
+            </p>
           </div>
+          <Button
+            onClick={handleSubmit}
+            size="lg"
+            className="w-full md:w-auto px-10 py-6 text-lg font-bold bg-primary hover:bg-primary/90 text-white rounded-xl shadow-lg shadow-primary/20"
+          >
+            Finalizar Cadastro <ArrowRight className="ml-2 w-5 h-5" />
+          </Button>
         </div>
-      )}
+      </div>
     </div>
   );
 }
