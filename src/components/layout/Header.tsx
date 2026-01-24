@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import Image from "next/image";
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
@@ -31,10 +32,14 @@ export function Header() {
     <>
       <header className="sticky top-0 z-40 w-full border-b bg-black backdrop-blur supports-backdrop-filter:bg-black/60">
         <div className="w-full flex h-16 items-center justify-between px-4 md:px-6">
-          <Link href="/">
-            <span className="text-xl font-bold tracking-tight">
-              Igreja dos Vales
-            </span>
+          <Link href={"/"}>
+            <Image
+              src={"/logo.png"}
+              alt="Igreja dos Vales Logo"
+              width={200}
+              height={50}
+              className="flex items-center"
+            ></Image>
           </Link>
 
           {/* Desktop Nav */}
