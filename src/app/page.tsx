@@ -1,6 +1,7 @@
 import { Hero } from "@/components/section/Hero";
 import { InfoCard } from "@/components/ui/info-card";
 import { FAQSection } from "@/components/section/Faq";
+import { ChurchInfoGrid } from "@/components/church/ChurchInfoGrid";
 import { HandHeart, Mail, Car } from "lucide-react";
 import Link from "next/link";
 
@@ -9,47 +10,7 @@ export default function Home() {
     <div className="flex flex-col min-h-screen bg-[#0a0a0a]">
       <Hero />
 
-      <section className="max-w-7xl mx-auto py-16 px-4 md:px-6">
-        <h2 className="text-3xl font-bold mb-12 text-center text-white">
-          Outras formas de contribuir
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <InfoCard
-            title="Doe Pessoalmente"
-            icon={<HandHeart />}
-            description="Você pode contribuir pessoalmente em qualquer uma de nossas unidades durante os cultos de fim de semana."
-          />
-          <InfoCard
-            title="Envie pelo Correio"
-            icon={<Mail />}
-            description={
-              <div>
-                A/C: Financeiro Igreja dos Vales
-                <br />
-                Rua Exemplo, 123
-                <br />
-                Cidade, SP 12345-678
-              </div>
-            }
-          />
-          <InfoCard
-            title="Bens e Ativos"
-            icon={<Car />}
-            description={
-              <div>
-                Se você possui outros ativos (veículos, imóveis, etc) que gostaria
-                de doar, por favor envie um email para{" "}
-                <Link
-                  href="mailto:financeiro@igrejadosvales.com.br"
-                  className="underline hover:text-white"
-                >
-                  financeiro@igrejadosvales.com.br
-                </Link>
-              </div>
-            }
-          />
-        </div>
-      </section>
+      <ChurchInfoGrid />
 
       <section className="max-w-7xl mx-auto py-16 px-4 md:px-6">
         <div className="text-center mb-12">
@@ -82,6 +43,48 @@ export default function Home() {
             description="Explore oportunidades de trabalho para usar seus talentos em um ambiente ministerial."
             linkText="Saiba mais"
             linkHref="/"
+          />
+        </div>
+      </section>
+
+      <section className="max-w-7xl mx-auto py-16 px-4 md:px-6 mb-10">
+        <h2 className="text-4xl font-bold mb-12 text-center text-white">
+          Outras formas de contribuir
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <InfoCard
+            title="Doe Pessoalmente"
+            icon={<HandHeart />}
+            description="Você pode contribuir pessoalmente em qualquer uma de nossas unidades durante os cultos de fim de semana."
+          />
+          <InfoCard
+            title="Envie pelo Correio"
+            icon={<Mail />}
+            description={
+              <div>
+                A/C: Financeiro Igreja dos Vales
+                <br />
+                Rua Exemplo, 123
+                <br />
+                Cidade, SP 12345-678
+              </div>
+            }
+          />
+          <InfoCard
+            title="Bens e Ativos"
+            icon={<Car />}
+            description={
+              <div>
+                Se você possui outros ativos (veículos, imóveis, etc) que
+                gostaria de doar, por favor envie um email para{" "}
+                <Link
+                  href="mailto:financeiro@igrejadosvales.com.br"
+                  className="underline hover:text-white"
+                >
+                  financeiro@igrejadosvales.com.br
+                </Link>
+              </div>
+            }
           />
         </div>
       </section>
