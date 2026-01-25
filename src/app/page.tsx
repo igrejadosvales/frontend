@@ -1,7 +1,7 @@
 import { Hero } from "@/components/section/Hero";
 import { InfoCard } from "@/components/ui/info-card";
 import { FAQSection } from "@/components/section/Faq";
-import { ChurchInfoGrid } from "@/components/church/ChurchInfoGrid";
+import { ChurchInfoGrid } from "@/components/grid/ChurchInfoGrid";
 import { HandHeart, Mail, Car } from "lucide-react";
 import Link from "next/link";
 
