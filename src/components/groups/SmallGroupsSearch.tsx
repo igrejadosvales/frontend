@@ -258,7 +258,7 @@ export default function SmallGroupsSearch() {
       {/* Mobile Toggle FAB */}
       <button
         onClick={() => setMobileView(mobileView === "list" ? "map" : "list")}
-        className="md:hidden absolute bottom-6 right-6 z-9999 bg-primary text-white w-14 h-14 rounded-full shadow-2xl shadow-primary/20 hover:bg-orange-600 transition-all active:scale-95 flex items-center justify-center border border-white/10 cursor-pointer"
+        className="md:hidden absolute bottom-6 right-6 z-50 bg-primary text-white w-14 h-14 rounded-full shadow-2xl shadow-primary/20 hover:bg-orange-600 transition-all active:scale-95 flex items-center justify-center border border-white/10 cursor-pointer"
         aria-label={mobileView === "list" ? "Ver Mapa" : "Ver Lista"}
       >
         {mobileView === "list" ? (
