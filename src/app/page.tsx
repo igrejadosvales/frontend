@@ -2,6 +2,7 @@ import { Hero } from "@/components/section/Hero";
 import { InfoCard } from "@/components/ui/info-card";
 import { FAQSection } from "@/components/section/Faq";
 import { ChurchInfoGrid } from "@/components/grid/ChurchInfoGrid";
+import { Carousel } from "@/components/ui/Carousel";
 import { HandHeart, Mail, Car } from "lucide-react";
 import Link from "next/link";
 
@@ -11,6 +12,8 @@ export default function Home() {
       <Hero />
 
       <ChurchInfoGrid />
+
+      <Carousel />
 
       <section className="max-w-7xl mx-auto py-16 px-4 md:px-6">
         <div className="text-center mb-12">
