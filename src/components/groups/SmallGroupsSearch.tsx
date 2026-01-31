@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import dynamic from "next/dynamic";
 import {
   Search,
@@ -16,7 +16,7 @@ import {
   List,
 } from "lucide-react";
 import { Input } from "@/components/ui/input";
-import { SMALL_GROUPS, SmallGroup } from "@/lib/mock-pgs";
+import { getSmallGroups, SmallGroup } from "@/lib/mock-pgs";
 import { cn } from "@/lib/utils";
 import { Button } from "../ui/button";
 
@@ -42,27 +42,45 @@ const DAYS = [
   "Sexta",
   "Sábado",
   "Domingo",
+  "Online",
 ];
 
 export default function SmallGroupsSearch() {
   const [search, setSearch] = useState("");
+  const [groups, setGroups] = useState<SmallGroup[]>([]);
+  const [loading, setLoading] = useState(true);
   const [selectedDay, setSelectedDay] = useState("Todos");
   const [selectedGroup, setSelectedGroup] = useState<SmallGroup | null>(null);
   const [openWhatsApp, setOpenWhatsApp] = useState(false);
   const [mobileView, setMobileView] = useState<"list" | "map">("list");
 
+  useEffect(() => {
+    async function fetchGroups() {
+      try {
+        const data = await getSmallGroups();
+        setGroups(data);
+      } catch (error) {
+        console.error("Failed to fetch groups", error);
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchGroups();
+  }, []);
+
   const filteredGroups = useMemo(() => {
-    return SMALL_GROUPS.filter((group) => {
+    return groups.filter((group) => {
       const matchesSearch =
         group.name.toLowerCase().includes(search.toLowerCase()) ||
-        group.neighborhood.toLowerCase().includes(search.toLowerCase()) ||
+        (group.neighborhood &&
+          group.neighborhood.toLowerCase().includes(search.toLowerCase())) ||
         group.leader.toLowerCase().includes(search.toLowerCase());
 
       const matchesDay = selectedDay === "Todos" || group.day === selectedDay;
 
       return matchesSearch && matchesDay;
     });
-  }, [search, selectedDay]);
+  }, [search, selectedDay, groups]);
 
   const handleWhatsAppClick = (group: SmallGroup, e: React.MouseEvent) => {
     e.stopPropagation();
@@ -136,7 +154,11 @@ export default function SmallGroupsSearch() {
           </div>
 
           <div className="flex-1 overflow-y-auto p-4 custom-scrollbar bg-[#0f0f0f]">
-            {filteredGroups.length > 0 ? (
+            {loading ? (
+              <div className="p-8 text-center text-gray-500">
+                Carregando grupos...
+              </div>
+            ) : filteredGroups.length > 0 ? (
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {filteredGroups.map((group) => (
                   <div
@@ -167,7 +189,7 @@ export default function SmallGroupsSearch() {
                         <div className="flex items-center gap-2 text-sm text-gray-400">
                           <MapPin className="w-4 h-4 shrink-0 text-gray-500 group-hover:text-primary/70 transition-colors" />
                           <span className="line-clamp-1">
-                            {group.neighborhood}
+                            {group.neighborhood || "N/A"}
                           </span>
                         </div>
                         <div className="flex items-center gap-2 text-sm text-gray-400">
@@ -262,7 +284,7 @@ export default function SmallGroupsSearch() {
                   </h3>
                   <div className="pl-6 border-l-2 border-white/10 group-hover:border-primary/50 transition-colors">
                     <p className="text-xl text-white font-medium mb-1">
-                      {selectedGroup.neighborhood}
+                      {selectedGroup.neighborhood || "N/A"}
                     </p>
                     <p className="text-gray-400">{selectedGroup.address}</p>
                   </div>
