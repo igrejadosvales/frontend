@@ -1,69 +1,63 @@
+import { supabase } from "./supabase";
+
 export interface SmallGroup {
   id: string;
   name: string;
   leader: string;
-  day: "Segunda" | "Terça" | "Quarta" | "Quinta" | "Sexta" | "Sábado" | "Domingo";
+  supervisor?: string;
+  phone?: string;
+  day: string;
   time: string;
   address: string;
-  coordinates: [number, number]; // [latitude, longitude]
+  neighborhood?: string;
+  coordinates: [number, number] | null; // [latitude, longitude]
   description?: string;
-  neighborhood: string;
+  type?: string;
+  local?: string;
 }
 
-export const SMALL_GROUPS: SmallGroup[] = [
-  {
-    id: "1",
-    name: "PG Jovem Vida",
-    leader: "Lucas e Mariana",
-    day: "Sexta",
-    time: "20:00",
-    address: "Rua Anápio Gomes, 123",
-    neighborhood: "Centro",
-    coordinates: [-29.9425, -50.9950],
-    description: "Um grupo focado em jovens universitários e recém-formados.",
-  },
-  {
-    id: "2",
-    name: "PG Família Feliz",
-    leader: "Roberto e Ana",
-    day: "Quarta",
-    time: "19:30",
-    address: "Av. Ely Corrêa, 500",
-    neighborhood: "Parque dos Anjos",
-    coordinates: [-29.9320, -50.9750],
-    description: "Voltado para casais e famílias com crianças.",
-  },
-  {
-    id: "3",
-    name: "PG Mulheres de Fé",
-    leader: "Patrícia",
-    day: "Quinta",
-    time: "15:00",
-    address: "Av. Alexandrino de Alencar, 800",
-    neighborhood: "Morada do Vale I",
-    coordinates: [-29.9150, -51.0250],
-    description: "Estudo bíblico e comunhão para mulheres.",
-  },
-  {
-    id: "4",
-    name: "PG Conexão",
-    leader: "Felipe",
-    day: "Terça",
-    time: "20:30",
-    address: "Rua Ary Tubbs, 200",
-    neighborhood: "Cohab A",
-    coordinates: [-29.9520, -51.0120],
-    description: "Grupo dinâmico com foco em missões urbanas.",
-  },
-  {
-    id: "5",
-    name: "PG Melhor Idade",
-    leader: "Dona Maria",
-    day: "Quarta",
-    time: "16:00",
-    address: "Rua Itacolomi, 400",
-    neighborhood: "São Vicente",
-    coordinates: [-29.9610, -51.0320],
-    description: "Comunhão e oração para a melhor idade.",
-  },
-];
+interface GroupDB {
+  id: string;
+  local: string | null;
+  leader: string | null;
+  supervisor: string | null;
+  phone: string | null;
+  day: string | null;
+  hour: string | null;
+  address: string | null;
+  latitude: number | null;
+  longitude: number | null;
+  type: string | null;
+}
+
+export async function getSmallGroups(): Promise<SmallGroup[]> {
+  const { data, error } = await supabase.from("igrupos").select("*");
+
+  if (error) {
+    console.error("Error fetching groups:", error);
+    return [];
+  }
+
+  return ((data as unknown as GroupDB[]) || []).map((item) => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const raw = item as any;
+    return {
+      id: item.id,
+      name: item.local || "Pequeno Grupo",
+      leader: item.leader || "Sem líder",
+      supervisor: item.supervisor || undefined,
+      phone: item.phone || undefined,
+      day: item.day || "Indefinido",
+      time: item.hour || "",
+      address: item.address || "",
+      // Use city or neighborhood from DB if available, otherwise default to Gravataí
+      neighborhood: raw.city || raw.neighborhood || "Gravataí",
+      coordinates:
+        item.latitude && item.longitude ? [item.latitude, item.longitude] : null,
+      type: item.type || undefined,
+      local: item.local || undefined,
+    };
+  });
+}
+
+export const SMALL_GROUPS: SmallGroup[] = [];
