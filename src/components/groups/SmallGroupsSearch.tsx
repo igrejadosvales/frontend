@@ -1,12 +1,24 @@
-"use client"
+"use client";
 
-import { useState, useMemo } from "react"
-import dynamic from "next/dynamic"
-import { Search, ChevronLeft, User, Calendar, Clock, MapPin, Users, Filter, MessageCircle, Map as MapIcon, List } from "lucide-react"
-import { Input } from "@/components/ui/input"
-import { SMALL_GROUPS, SmallGroup } from "@/lib/mock-pgs"
-import { cn } from "@/lib/utils"
-import { Button } from "../ui/button"
+import { useState, useMemo } from "react";
+import dynamic from "next/dynamic";
+import {
+  Search,
+  ChevronLeft,
+  User,
+  Calendar,
+  Clock,
+  MapPin,
+  Users,
+  Filter,
+  MessageCircle,
+  Map as MapIcon,
+  List,
+} from "lucide-react";
+import { Input } from "@/components/ui/input";
+import { SMALL_GROUPS, SmallGroup } from "@/lib/mock-pgs";
+import { cn } from "@/lib/utils";
+import { Button } from "../ui/button";
 
 // Dynamically import the map component to avoid SSR issues with Leaflet
 const GroupMap = dynamic(() => import("@/components/groups/GroupMap"), {
@@ -19,45 +31,55 @@ const GroupMap = dynamic(() => import("@/components/groups/GroupMap"), {
       </div>
     </div>
   ),
-})
+});
 
-const DAYS = ["Todos", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado", "Domingo"]
+const DAYS = [
+  "Todos",
+  "Segunda",
+  "Terça",
+  "Quarta",
+  "Quinta",
+  "Sexta",
+  "Sábado",
+  "Domingo",
+];
 
 export default function SmallGroupsSearch() {
-  const [search, setSearch] = useState("")
-  const [selectedDay, setSelectedDay] = useState("Todos")
-  const [selectedGroup, setSelectedGroup] = useState<SmallGroup | null>(null)
-  const [openWhatsApp, setOpenWhatsApp] = useState(false)
-  const [mobileView, setMobileView] = useState<"list" | "map">("list")
+  const [search, setSearch] = useState("");
+  const [selectedDay, setSelectedDay] = useState("Todos");
+  const [selectedGroup, setSelectedGroup] = useState<SmallGroup | null>(null);
+  const [openWhatsApp, setOpenWhatsApp] = useState(false);
+  const [mobileView, setMobileView] = useState<"list" | "map">("list");
 
   const filteredGroups = useMemo(() => {
     return SMALL_GROUPS.filter((group) => {
       const matchesSearch =
         group.name.toLowerCase().includes(search.toLowerCase()) ||
         group.neighborhood.toLowerCase().includes(search.toLowerCase()) ||
-        group.leader.toLowerCase().includes(search.toLowerCase())
+        group.leader.toLowerCase().includes(search.toLowerCase());
 
-      const matchesDay = selectedDay === "Todos" || group.day === selectedDay
+      const matchesDay = selectedDay === "Todos" || group.day === selectedDay;
 
-      return matchesSearch && matchesDay
-    })
-  }, [search, selectedDay])
+      return matchesSearch && matchesDay;
+    });
+  }, [search, selectedDay]);
 
   const handleWhatsAppClick = (group: SmallGroup, e: React.MouseEvent) => {
-    e.stopPropagation()
-    setSelectedGroup(group)
-    setOpenWhatsApp(true)
-  }
+    e.stopPropagation();
+    setSelectedGroup(group);
+    setOpenWhatsApp(true);
+  };
 
   return (
     <div className="flex flex-col md:flex-row h-[calc(100vh-64px)] overflow-hidden bg-[#121212] relative">
       {/* Sidebar */}
       {/* Sidebar - relative container for sliding views */}
-      <div className={cn(
-        "w-full md:w-[600px] border-r border-white/5 bg-[#0f0f0f] flex-col h-full z-10 shadow-2xl relative overflow-hidden",
-        mobileView === "map" ? "hidden md:flex" : "flex"
-      )}>
-
+      <div
+        className={cn(
+          "w-full md:w-[600px] border-r border-white/5 bg-[#0f0f0f] flex-col h-full z-10 shadow-2xl relative overflow-hidden",
+          mobileView === "map" ? "hidden md:flex" : "flex",
+        )}
+      >
         {/* Header - Always visible for list, but we might want to hide it or change it for details. 
             For now, let's keep the header part of the 'list view' container so it slides away too.
         */}
@@ -66,7 +88,7 @@ export default function SmallGroupsSearch() {
         <div
           className={cn(
             "absolute inset-0 flex flex-col transition-transform duration-300 ease-in-out bg-[#0f0f0f]",
-            openWhatsApp ? "-translate-x-full" : "translate-x-0"
+            openWhatsApp ? "-translate-x-full" : "translate-x-0",
           )}
         >
           <div className="p-6 space-y-6 bg-linear-to-b from-[#1a1a1a] to-[#0f0f0f] border-b border-white/5 shrink-0">
@@ -103,7 +125,7 @@ export default function SmallGroupsSearch() {
                       "px-3 py-1.5 rounded-full text-xs font-medium transition-all border",
                       selectedDay === day
                         ? "bg-primary text-white border-primary shadow-lg shadow-primary/20"
-                        : "bg-white/5 text-gray-400 border-white/5 hover:bg-white/10 hover:text-white hover:border-white/10"
+                        : "bg-white/5 text-gray-400 border-white/5 hover:bg-white/10 hover:text-white hover:border-white/10",
                     )}
                   >
                     {day}
@@ -123,13 +145,20 @@ export default function SmallGroupsSearch() {
                       "group relative p-4 rounded-xl border transition-all duration-300 cursor-pointer flex flex-col",
                       selectedGroup?.id === group.id
                         ? "bg-primary/10 border-primary/50 shadow-lg shadow-primary/10"
-                        : "bg-[#1a1a1a] border-white/5 hover:border-white/20 hover:bg-[#202020] hover:translate-y-[-2px] hover:shadow-xl"
+                        : "bg-[#1a1a1a] border-white/5 hover:border-white/20 hover:bg-[#202020] hover:translate-y-[-2px] hover:shadow-xl",
                     )}
                     onClick={() => setSelectedGroup(group)}
                   >
                     <div className="flex-1 space-y-3">
                       <div className="flex justify-between items-start">
-                        <h3 className={cn("font-bold text-lg leading-tight transition-colors", selectedGroup?.id === group.id ? "text-primary" : "text-white group-hover:text-primary")}>
+                        <h3
+                          className={cn(
+                            "font-bold text-lg leading-tight transition-colors",
+                            selectedGroup?.id === group.id
+                              ? "text-primary"
+                              : "text-white group-hover:text-primary",
+                          )}
+                        >
                           {group.name}
                         </h3>
                       </div>
@@ -137,7 +166,9 @@ export default function SmallGroupsSearch() {
                       <div className="space-y-2">
                         <div className="flex items-center gap-2 text-sm text-gray-400">
                           <MapPin className="w-4 h-4 shrink-0 text-gray-500 group-hover:text-primary/70 transition-colors" />
-                          <span className="line-clamp-1">{group.neighborhood}</span>
+                          <span className="line-clamp-1">
+                            {group.neighborhood}
+                          </span>
                         </div>
                         <div className="flex items-center gap-2 text-sm text-gray-400">
                           <User className="w-4 h-4 shrink-0 text-gray-500 group-hover:text-primary/70 transition-colors" />
@@ -145,7 +176,9 @@ export default function SmallGroupsSearch() {
                         </div>
                         <div className="flex items-center gap-2 text-sm text-gray-400">
                           <Calendar className="w-4 h-4 shrink-0 text-gray-500 group-hover:text-primary/70 transition-colors" />
-                          <span>{group.day} às {group.time}</span>
+                          <span>
+                            {group.day} às {group.time}
+                          </span>
                         </div>
                       </div>
                     </div>
@@ -174,11 +207,13 @@ export default function SmallGroupsSearch() {
         <div
           className={cn(
             "absolute inset-0 bg-[#0f0f0f] z-20 flex flex-col transition-transform duration-300 ease-in-out",
-            openWhatsApp ? "translate-x-0" : "translate-x-full"
+            openWhatsApp ? "translate-x-0" : "translate-x-full",
           )}
         >
           {selectedGroup && (
-            <div className="flex flex-col h-full overflow-y-hidden custom-scrollbar p-6"> {/* Added padding directly here instead of wrapper modal */}
+            <div className="flex flex-col h-full overflow-y-hidden custom-scrollbar p-6">
+              {" "}
+              {/* Added padding directly here instead of wrapper modal */}
               <button
                 onClick={() => setOpenWhatsApp(false)}
                 className="self-start flex items-center gap-2 text-gray-400 hover:text-primary transition-colors group shrink-0 cursor-pointer"
@@ -188,15 +223,20 @@ export default function SmallGroupsSearch() {
                   <ChevronLeft className="w-5 h-5" />
                 </div>
               </button>
-
               <div className="flex flex-col items-center text-center mb-8 animate-in fade-in zoom-in duration-300 shrink-0">
                 <div className="w-21 h-21 rounded-full bg-linear-to-br from-primary to-orange-600 p-[3px] mb-3 shadow-2xl shadow-primary/20">
                   <div className="w-full h-full rounded-full bg-[#1a1a1a] flex items-center justify-center overflow-hidden relative">
                     {/* Placeholder Avatar */}
-                    <img src={`https://ui-avatars.com/api/?name=${selectedGroup.name}&background=random&color=fff`} alt="Group Avatar" className="object-cover h-full w-full opacity-90" />
+                    <img
+                      src={`https://ui-avatars.com/api/?name=${selectedGroup.name}&background=random&color=fff`}
+                      alt="Group Avatar"
+                      className="object-cover h-full w-full opacity-90"
+                    />
                   </div>
                 </div>
-                <h1 className="text-2xl font-bold text-white mb-2">{selectedGroup.name}</h1>
+                <h1 className="text-2xl font-bold text-white mb-2">
+                  {selectedGroup.name}
+                </h1>
                 <div className="flex items-center gap-3 justify-center mb-6">
                   <span className="px-4 py-1.5 rounded-full bg-primary/20 text-primary text-sm font-bold uppercase tracking-wider border border-primary/20">
                     {selectedGroup.day}
@@ -206,13 +246,14 @@ export default function SmallGroupsSearch() {
                   </span>
                 </div>
               </div>
-
               <div className="space-y-4 flex-1 animate-in slide-in-from-bottom-8 fade-in duration-500 delay-100">
                 <div className="bg-[#1a1a1a] rounded-2xl p-6 border border-white/5 hover:border-primary/30 transition-all group">
                   <h3 className="text-gray-500 text-xs uppercase font-bold tracking-wider mb-3 flex items-center gap-2">
                     <User className="w-4 h-4 text-primary" /> Liderança
                   </h3>
-                  <p className="text-xl text-white font-medium pl-6 border-l-2 border-primary/50">{selectedGroup.leader}</p>
+                  <p className="text-xl text-white font-medium pl-6 border-l-2 border-primary/50">
+                    {selectedGroup.leader}
+                  </p>
                 </div>
 
                 <div className="bg-[#1a1a1a] rounded-2xl p-6 border border-white/5 hover:border-primary/30 transition-all group">
@@ -220,17 +261,21 @@ export default function SmallGroupsSearch() {
                     <MapPin className="w-4 h-4 text-primary" /> Localização
                   </h3>
                   <div className="pl-6 border-l-2 border-white/10 group-hover:border-primary/50 transition-colors">
-                    <p className="text-xl text-white font-medium mb-1">{selectedGroup.neighborhood}</p>
+                    <p className="text-xl text-white font-medium mb-1">
+                      {selectedGroup.neighborhood}
+                    </p>
                     <p className="text-gray-400">{selectedGroup.address}</p>
                   </div>
                 </div>
               </div>
-
               <div className="mt-8 pt-6 border-t border-white/10 animate-in slide-in-from-bottom-8 fade-in duration-500 delay-200 shrink-0 h-full">
                 <Button
                   className="w-full bg-green-600 hover:bg-green-500 text-white font-bold h-14 text-lg rounded-xl shadow-lg shadow-green-600/20 transition-all hover:scale-[1.02]"
                   onClick={() => {
-                    window.open(`https://wa.me/?text=Olá, gostaria de visitar o grupo ${selectedGroup.name}`, '_blank')
+                    window.open(
+                      `https://wa.me/?text=Olá, gostaria de visitar o grupo ${selectedGroup.name}`,
+                      "_blank",
+                    );
                   }}
                 >
                   <MessageCircle className="w-6 h-6 mr-2" />
@@ -246,11 +291,20 @@ export default function SmallGroupsSearch() {
       </div>
 
       {/* Map Area */}
-      <div className={cn(
-        "flex-1 h-full relative bg-[#121212]",
-        mobileView === "list" ? "hidden md:block" : "block"
-      )}>
-        <GroupMap groups={filteredGroups} selectedGroup={selectedGroup} />
+      <div
+        className={cn(
+          "flex-1 h-full relative bg-[#121212]",
+          mobileView === "list" ? "hidden md:block" : "block",
+        )}
+      >
+        <GroupMap
+          groups={filteredGroups}
+          selectedGroup={selectedGroup}
+          onShowDetails={(group) => {
+            setSelectedGroup(group);
+            setOpenWhatsApp(true);
+          }}
+        />
         {/* Map Overlay Gradient */}
         <div className="absolute top-0 left-0 w-full h-24 bg-linear-to-b from-[#121212] to-transparent pointer-events-none z-400" />
       </div>
@@ -267,8 +321,6 @@ export default function SmallGroupsSearch() {
           <List className="w-6 h-6" />
         )}
       </button>
-
     </div>
-  )
+  );
 }
-
