@@ -246,7 +246,7 @@ export default function StepExistingVolunteer({
                     </div>
 
                     <p className="text-gray-300 leading-relaxed text-sm">
-                      "{feedback.comment}"
+                      &quot;{feedback.comment}&quot;
                     </p>
                   </div>
                 ))}

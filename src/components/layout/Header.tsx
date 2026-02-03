@@ -26,6 +26,7 @@ export function Header() {
     { name: "Início", href: "/" },
     { name: "iGrupos", href: "/igrupos" },
     { name: "Voluntariado", href: "/voluntarios" },
+    { name: "Bíblia", href: "/biblia" },
   ];
 
   return (

@@ -125,38 +125,40 @@ export default function GroupMap({
 
     source.clear();
 
-    const features = groups.map((group) => {
-      // Mock data is using [Lat, Lon] (Leaflet style)
-      // OpenLayers uses [Lon, Lat]
-      const lon = group.coordinates[1];
-      const lat = group.coordinates[0];
+    const features = groups
+      .filter(g => g.coordinates !== null)
+      .map((group) => {
+        // Mock data is using [Lat, Lon] (Leaflet style)
+        // OpenLayers uses [Lon, Lat]
+        const lon = group.coordinates![1];
+        const lat = group.coordinates![0];
 
-      const feature = new Feature({
-        geometry: new Point(fromLonLat([lon, lat])),
-        groupData: group,
-      });
+        const feature = new Feature({
+          geometry: new Point(fromLonLat([lon, lat])),
+          groupData: group,
+        });
 
-      feature.setStyle(
-        new Style({
-          image: new Icon({
-            anchor: [0.5, 1], // Bottom center
-            anchorXUnits: "fraction",
-            anchorYUnits: "fraction",
-            src: "/igrupoIcon.svg",
-            width: 40,
-            height: 40,
+        feature.setStyle(
+          new Style({
+            image: new Icon({
+              anchor: [0.5, 1], // Bottom center
+              anchorXUnits: "fraction",
+              anchorYUnits: "fraction",
+              src: "/igrupoIcon.svg",
+              width: 40,
+              height: 40,
+            }),
           }),
-        }),
-      );
-      return feature;
-    });
+        );
+        return feature;
+      });
 
     source.addFeatures(features);
   }, [groups]);
 
   // Handle selectedGroup prop
   useEffect(() => {
-    if (!mapRef.current || !selectedGroup) return;
+    if (!mapRef.current || !selectedGroup || !selectedGroup.coordinates) return;
 
     const map = mapRef.current;
     const lon = selectedGroup.coordinates[1];
@@ -170,10 +172,12 @@ export default function GroupMap({
     });
 
     if (overlayRef.current) {
-      setPopupContent(selectedGroup);
+      if (popupContent?.id !== selectedGroup.id) {
+        setTimeout(() => setPopupContent(selectedGroup), 0);
+      }
       overlayRef.current.setPosition(center);
     }
-  }, [selectedGroup]);
+  }, [selectedGroup, popupContent]);
 
   return (
     <div className="h-full w-full relative z-0">

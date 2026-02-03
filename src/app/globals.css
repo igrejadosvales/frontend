@@ -1,3 +1,22 @@
+/* Scrollbar customizado para esconder setas e fundo branco nos planos */
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #222 #18120c;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+  background: #18120c;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #222;
+  border-radius: 8px;
+}
+.custom-scrollbar::-webkit-scrollbar-button {
+  display: none;
+  height: 0;
+  width: 0;
+}
 @import "tailwindcss";
 
 @plugin "tailwindcss-animate";
