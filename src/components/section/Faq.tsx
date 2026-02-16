@@ -50,7 +50,7 @@ function AccordionItem({ item, isOpen, onClick }: AccordionItemProps) {
         className="w-full py-6 flex items-center justify-between text-left group transition-colors cursor-pointer"
         onClick={onClick}
       >
-        <span className="text-lg font-medium text-white group-hover:text-primary transition-colors">
+        <span className="text-lg font-medium text-neutral-900 group-hover:text-primary transition-colors">
           {item.question}
         </span>
         <ChevronDown
@@ -84,7 +84,7 @@ export function FAQSection() {
   return (
     <section className="pb-24 mt-5 max-w-7xl mx-auto">
       <div className="px-4 md:px-6">
-        <h2 className="text-5xl font-bold text-white mb-6">FAQs</h2>
+        <h2 className="text-5xl font-bold text-neutral-900 mb-6">FAQs</h2>
         <div className="w-full">
           {FAQS.map((faq, index) => (
             <AccordionItem

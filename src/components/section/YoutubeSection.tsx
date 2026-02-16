@@ -20,10 +20,7 @@ export function YoutubeSection() {
                 <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
                     <div className="flex items-center gap-2">
                         <span className="bg-[#F9452C] w-1.5 h-6 rounded-sm" />
-                        <h2 className="text-xl font-bold text-neutral-900">Youtube</h2>
-                    </div>
-                    <div className="text-neutral-500 font-medium text-sm md:text-base">
-                        (IC SJC)
+                        <h2 className="text-xl font-bold text-neutral-900">Mensagens</h2>
                     </div>
                     <div className="text-neutral-400 text-sm hidden md:block">
                         ©{new Date().getFullYear()}
@@ -73,10 +70,10 @@ export function YoutubeSection() {
 
                         <div className="space-y-4">
                             <h4 className="text-3xl md:text-4xl font-bold text-neutral-900 leading-tight">
-                                #04 SERVINDO COMO JESUS || Pr. Max Souza || SÉRIE : SER COMO JESUS || 25/01/26 || ICTV
+                                Pr. Oseias Santos | Preparando o Relacionamento | Celebração de Domingo!
                             </h4>
                             <p className="text-neutral-600 text-lg leading-relaxed">
-                                Começamos o ano com a série Ser Como Jesus. Não perca aos domingos de Janeiro!
+                                Não perca a mensagem do nosso pastor Oseias Santos sobre o tema: Preparando o Relacionamento.
                             </p>
                         </div>
 

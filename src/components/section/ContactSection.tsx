@@ -19,9 +19,6 @@ export function ContactSection() {
                                 Vamos ficar mais próximos!
                             </h2>
                         </div>
-                        <div className="text-muted-foreground font-medium text-lg">
-                            (IC SJC)
-                        </div>
                         <div className="text-muted-foreground text-sm font-medium">
                             ©{new Date().getFullYear()}
                         </div>
@@ -36,7 +33,7 @@ export function ContactSection() {
                                     Entre em Contato
                                 </span>
                                 <h3 className="text-2xl md:text-3xl font-bold mb-3 text-foreground">
-                                    Fique por dentro de tudo aqui da IC!
+                                    Fique por dentro de tudo aqui da Igreja dos Vales!
                                 </h3>
                                 <p className="text-muted-foreground text-lg leading-relaxed">
                                     Deixe seu contato e vamos te enviar materiais exclusivos!
