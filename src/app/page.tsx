@@ -1,23 +1,28 @@
 import { Hero } from "@/components/section/Hero";
 import { InfoCard } from "@/components/ui/info-card";
 import { FAQSection } from "@/components/section/Faq";
+import { YoutubeSection } from "@/components/section/YoutubeSection";
+import { LogoTicker } from "@/components/section/LogoTicker";
 import { ChurchInfoGrid } from "@/components/grid/ChurchInfoGrid";
 import { HandHeart, Mail, Car } from "lucide-react";
 import Link from "next/link";
+import { Informations } from "@/components/section/Informations";
+import { ContactSection } from "@/components/section/ContactSection";
 
 export default function Home() {
   return (
-    <div className="flex flex-col min-h-screen bg-[#0a0a0a]">
+    <div className="flex flex-col min-h-screen bg-background">
       <Hero />
-
+      <Informations />
+      <LogoTicker />
       <ChurchInfoGrid />
 
       <section className="max-w-7xl mx-auto py-16 px-4 md:px-6">
         <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-white mb-4">
+          <h2 className="text-4xl font-bold text-foreground mb-4">
             Como se Envolver
           </h2>
-          <p className="text-gray-400 max-w-2xl mx-auto">
+          <p className="text-muted-foreground max-w-2xl mx-auto">
             Veja como Deus pode usar seus dons para causar um impacto eterno.
           </p>
         </div>
@@ -48,7 +53,7 @@ export default function Home() {
       </section>
 
       <section className="max-w-7xl mx-auto py-16 px-4 md:px-6 mb-10">
-        <h2 className="text-4xl font-bold mb-12 text-center text-white">
+        <h2 className="text-4xl font-bold mb-12 text-center text-foreground">
           Outras formas de contribuir
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -79,7 +84,7 @@ export default function Home() {
                 gostaria de doar, por favor envie um email para{" "}
                 <Link
                   href="mailto:financeiro@igrejadosvales.com.br"
-                  className="underline hover:text-white"
+                  className="underline hover:text-primary"
                 >
                   financeiro@igrejadosvales.com.br
                 </Link>
@@ -89,7 +94,11 @@ export default function Home() {
         </div>
       </section>
 
+      <YoutubeSection />
+
       <FAQSection />
+
+      <ContactSection />
     </div>
   );
 }

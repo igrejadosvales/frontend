@@ -31,8 +31,8 @@ export function Header() {
 
   return (
     <>
-      <header className="sticky top-0 z-40 w-full border-b bg-black backdrop-blur supports-backdrop-filter:bg-black/60">
-        <div className="w-full flex h-16 items-center justify-between px-4 md:px-6">
+      <header className="z-40 w-full">
+        <div className="bg-transparent absolute w-full flex h-16 items-center justify-between px-4 md:px-6">
           <Link href={"/"}>
             <Image
               src={"/logo.png"}
@@ -49,7 +49,7 @@ export function Header() {
               <Link
                 key={item.href}
                 href={item.href}
-                className="text-sm font-medium transition-colors hover:text-primary"
+                className="text-lg text-white font-medium transition-colors hover:text-primary"
               >
                 {item.name}
               </Link>
@@ -71,7 +71,7 @@ export function Header() {
       {/* Full Screen Mobile Menu */}
       <div
         className={cn(
-          "fixed inset-0 z-999 w-full h-full bg-[#121212] backdrop-blur supports-backdrop-filter:bg-black/60 md:hidden transition-transform duration-300 ease-in-out",
+          "fixed inset-0 z-999 w-full h-full bg-background backdrop-blur supports-[backdrop-filter]:bg-background/60 md:hidden transition-transform duration-300 ease-in-out",
           isMenuOpen ? "translate-x-0" : "translate-x-full",
         )}
       >
@@ -94,14 +94,14 @@ export function Header() {
               <Link
                 key={item.href}
                 href={item.href}
-                className="text-2xl font-medium transition-colors hover:text-primary text-right w-full border-b-2 border-[#363636] pb-2"
+                className="text-2xl font-medium transition-colors hover:text-primary text-right w-full border-b-2 border-border pb-2"
                 onClick={() => setIsMenuOpen(false)}
               >
                 {item.name}
               </Link>
             ))}
             <Button className="w-auto px-10 py-5" size="sm">
-              Doar Agora
+              Oferte
             </Button>
           </nav>
         </div>

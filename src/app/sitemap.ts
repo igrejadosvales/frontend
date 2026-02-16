@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-    const baseUrl = 'https://igrejadosvales.com.br' // Replace with actual URL
+    const baseUrl = 'https://igrejadosvales.com.br'
 
     return [
         {
@@ -11,34 +11,22 @@ export default function sitemap(): MetadataRoute.Sitemap {
             priority: 1,
         },
         {
-            url: `${baseUrl}/sobre`,
-            lastModified: new Date(),
-            changeFrequency: 'monthly',
-            priority: 0.8,
-        },
-        {
-            url: `${baseUrl}/ministerios`,
-            lastModified: new Date(),
-            changeFrequency: 'monthly',
-            priority: 0.8,
-        },
-        {
-            url: `${baseUrl}/eventos`,
-            lastModified: new Date(),
-            changeFrequency: 'weekly',
-            priority: 0.8,
-        },
-        {
             url: `${baseUrl}/igrupos`,
             lastModified: new Date(),
             changeFrequency: 'weekly',
             priority: 0.9,
         },
         {
-            url: `${baseUrl}/contato`,
+            url: `${baseUrl}/voluntarios`,
             lastModified: new Date(),
-            changeFrequency: 'yearly',
-            priority: 0.5,
+            changeFrequency: 'monthly',
+            priority: 0.8,
+        },
+        {
+            url: `${baseUrl}/biblia`,
+            lastModified: new Date(),
+            changeFrequency: 'daily',
+            priority: 0.8,
         },
     ]
 }

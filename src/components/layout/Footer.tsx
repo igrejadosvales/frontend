@@ -19,7 +19,7 @@ export function Footer() {
   ]
 
   return (
-    <footer className="w-full border-t bg-black">
+    <footer className="w-full border-t bg-neutral-100">
       <div className="container mx-auto px-4 py-12 md:px-6">
         <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
           {/* Brand & Description */}

@@ -59,10 +59,10 @@ export const ChurchInfoGrid: React.FC = () => {
   return (
     <section className="w-full max-w-7xl mx-auto py-20 px-4 md:px-6">
       <div className="mb-14 text-center">
-        <h2 className="text-4xl md:text-5xl font-extrabold text-white mb-3 tracking-tight">
+        <h2 className="text-4xl md:text-5xl font-extrabold text-foreground mb-3 tracking-tight">
           Um lugar para você e sua família
         </h2>
-        <p className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto">
+        <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
           Fique por dentro dos avisos, eventos e oportunidades para se envolver
           na vida da igreja.
         </p>

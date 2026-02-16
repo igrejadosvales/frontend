@@ -11,6 +11,7 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://igrejadosvales.com.br"),
   title: {
     default: "Igreja dos Vales",
     template: "%s | Igreja dos Vales",
@@ -32,7 +33,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "pt_BR",
-    url: "https://igrejadosvales.com.br", // Replace with actual URL
+    url: "https://igrejadosvales.com.br",
     title: "Igreja dos Vales",
     description:
       "Uma igreja de fé, esperança e amor. Junte-se a nós nos cultos e pequenos grupos.",
@@ -48,6 +49,16 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  alternates: {
+    canonical: "https://igrejadosvales.com.br",
   },
 };
 
@@ -68,34 +79,43 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@graph": [
                 {
-                  "@type": "WebSite",
+                  "@type": "Organization",
+                  "@id": "https://igrejadosvales.com.br/#organization",
                   name: "Igreja dos Vales",
                   url: "https://igrejadosvales.com.br",
+                  logo: {
+                    "@type": "ImageObject",
+                    url: "https://igrejadosvales.com.br/logo.png",
+                    width: 200,
+                    height: 50,
+                  },
+                  sameAs: [
+                    "https://www.instagram.com/ivalesonline",
+                    "https://www.youtube.com/@ivalesonline",
+                  ],
+                  contactPoint: {
+                    "@type": "ContactPoint",
+                    email: "financeiro@igrejadosvales.com.br",
+                    contactType: "customer service",
+                    areaServed: "BR",
+                    availableLanguage: "Portuguese",
+                  },
+                },
+                {
+                  "@type": "WebSite",
+                  "@id": "https://igrejadosvales.com.br/#website",
+                  url: "https://igrejadosvales.com.br",
+                  name: "Igreja dos Vales",
+                  description: "Uma comunidade de fé vibrante em Gravataí e Porto Alegre.",
+                  publisher: {
+                    "@id": "https://igrejadosvales.com.br/#organization",
+                  },
                   potentialAction: {
                     "@type": "SearchAction",
                     target:
                       "https://igrejadosvales.com.br/busca?q={search_term_string}",
                     "query-input": "required name=search_term_string",
                   },
-                },
-                {
-                  "@type": "SiteNavigationElement",
-                  name: [
-                    "Início",
-                    "Sobre Nós",
-                    "Ministérios",
-                    "Eventos",
-                    "Pequenos Grupos",
-                    "Contato",
-                  ],
-                  url: [
-                    "https://igrejadosvales.com.br",
-                    "https://igrejadosvales.com.br/sobre",
-                    "https://igrejadosvales.com.br/ministerios",
-                    "https://igrejadosvales.com.br/eventos",
-                    "https://igrejadosvales.com.br/pequenos-grupos",
-                    "https://igrejadosvales.com.br/contato",
-                  ],
                 },
               ],
             }),

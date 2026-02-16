@@ -29,7 +29,7 @@ export function InfoCard({
   return (
     <div
       className={cn(
-        "group flex flex-col bg-[#121212] rounded-xl overflow-hidden border border-white/10 transition-all duration-300 hover:border-white/20 hover:bg-[#1a1a1a]",
+        "group flex flex-col bg-card rounded-xl overflow-hidden border border-border transition-all duration-300 hover:border-border/80 hover:bg-accent/50 shadow-sm",
         className
       )}
     >
@@ -45,16 +45,16 @@ export function InfoCard({
 
       <div className={cn("flex flex-col flex-1", hasImage ? "p-6" : "p-8")}>
         {!hasImage && icon && (
-          <div className="mb-6 text-white">
+          <div className="mb-6 text-primary">
             <div className="w-10 h-10 [&>svg]:w-full [&>svg]:h-full">
               {icon}
             </div>
           </div>
         )}
 
-        <h3 className="text-xl font-bold text-white mb-3">{title}</h3>
+        <h3 className="text-xl font-bold text-card-foreground mb-3">{title}</h3>
 
-        <div className="text-gray-400 text-sm leading-relaxed flex-1">
+        <div className="text-muted-foreground text-sm leading-relaxed flex-1">
           {description}
         </div>
 
@@ -62,7 +62,7 @@ export function InfoCard({
           <div className="mt-7">
             <Link
               href={linkHref}
-              className="inline-flex items-center text-sm font-bold text-white hover:text-primary transition-colors group/link"
+              className="inline-flex items-center text-sm font-bold text-primary hover:text-primary/80 transition-colors group/link"
             >
               {linkText}
               <ChevronRight className="ml-1 w-4 h-4 transition-transform group-hover/link:translate-x-1" />

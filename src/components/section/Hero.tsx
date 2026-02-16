@@ -29,27 +29,11 @@ interface Slide {
 const slides: Slide[] = [
   {
     id: 1,
-    image: "https://images.unsplash.com/photo-1438232992991-995b7058bbb3?q=80&w=2073&auto=format&fit=crop",
-    title: "Bem-vindo à Igreja dos Vales",
+    image: "/images/hero-5.jpg",
+    title: "Igreja dos Vales",
     description: "Um lugar de fé, esperança e amor. Junte-se a nós para adorar e servir.",
     primaryButtonText: "Assista ao Vivo",
     secondaryButtonText: "Saiba Mais",
-  },
-  {
-    id: 2,
-    image: "https://images.unsplash.com/photo-1510936111840-65e151ad71bb?q=80&w=2090&auto=format&fit=crop",
-    title: "Comunidade e Família",
-    description: "Crescemos juntos na fé. Encontre um pequeno grupo perto de você.",
-    primaryButtonText: "Grupos Pequenos",
-    secondaryButtonText: "Eventos",
-  },
-  {
-    id: 3,
-    image: "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=2070&auto=format&fit=crop",
-    title: "Adoração Profunda",
-    description: "Experimente a presença de Deus através da música e da palavra.",
-    primaryButtonText: "Nossa Música",
-    secondaryButtonText: "Horários",
   },
 ]
 
@@ -57,7 +41,7 @@ export function Hero() {
   const [swiperInstance, setSwiperInstance] = React.useState<SwiperType | null>(null)
 
   return (
-    <section className="relative h-[600px] w-full bg-black text-white group">
+    <section className="relative h-screen w-full bg-black text-white group">
       <Swiper
         modules={[Autoplay, Pagination, Navigation, EffectFade]}
         effect="fade"
@@ -88,13 +72,13 @@ export function Hero() {
                 className="object-cover"
                 priority={slide.id === 1}
               />
-              <div className="absolute inset-0 bg-black/50 z-10" />
+              <div className="absolute inset-0 z-10" />
             </div>
 
             {/* Content */}
-            <div className="relative z-20 container mx-auto flex h-full flex-col justify-center px-4 md:px-6">
+            <div className="relative z-20 container mx-auto flex h-full flex-col justify-end py-16">
               <div className="max-w-2xl space-y-4">
-                <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl animate-in fade-in slide-in-from-bottom-4 duration-700 delay-200">
+                <h1 className="text-6xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl animate-in fade-in slide-in-from-bottom-4 duration-700 delay-200">
                   {slide.title}
                 </h1>
                 <p className="text-lg md:text-xl text-gray-200 animate-in fade-in slide-in-from-bottom-5 duration-700 delay-300">
@@ -121,14 +105,14 @@ export function Hero() {
       {/* Custom Navigation Controls */}
       <button
         onClick={() => swiperInstance?.slidePrev()}
-        className="absolute left-4 top-1/2 z-30 -translate-y-1/2 rounded-full bg-black/20 p-2 text-white hover:bg-black/40 backdrop-blur-sm transition-colors opacity-0 group-hover:opacity-100 duration-300"
+        className="absolute left-4 top-1/2 z-30 -translate-y-1/2 rounded-full bg-black/20 p-2 text-white transition-colors opacity-0 group-hover:opacity-100 duration-300"
         aria-label="Previous slide"
       >
         <ChevronLeft className="h-8 w-8" />
       </button>
       <button
         onClick={() => swiperInstance?.slideNext()}
-        className="absolute right-4 top-1/2 z-30 -translate-y-1/2 rounded-full bg-black/20 p-2 text-white hover:bg-black/40 backdrop-blur-sm transition-colors opacity-0 group-hover:opacity-100 duration-300"
+        className="absolute right-4 top-1/2 z-30 -translate-y-1/2 rounded-full bg-black/20 p-2 text-white transition-colors opacity-0 group-hover:opacity-100 duration-300"
         aria-label="Next slide"
       >
         <ChevronRight className="h-8 w-8" />
