@@ -10,6 +10,7 @@ export interface SmallGroup {
   time: string;
   address: string;
   neighborhood?: string;
+  region?: string; // Gravataí, Cachoeirinha, Porto Alegre, Online
   coordinates: [number, number] | null; // [latitude, longitude]
   description?: string;
   type?: string;
@@ -39,7 +40,7 @@ export async function getSmallGroups(): Promise<SmallGroup[]> {
   }
 
   return ((data as unknown as GroupDB[]) || []).map((item) => {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+     
     const raw = item as any;
     return {
       id: item.id,
@@ -52,8 +53,11 @@ export async function getSmallGroups(): Promise<SmallGroup[]> {
       address: item.address || "",
       // Use city or neighborhood from DB if available, otherwise default to Gravataí
       neighborhood: raw.city || raw.neighborhood || "Gravataí",
+      region: raw.city || raw.region || "Gravataí", // Mapeamento da região
       coordinates:
-        item.latitude && item.longitude ? [item.latitude, item.longitude] : null,
+        item.latitude && item.longitude
+          ? [item.latitude, item.longitude]
+          : null,
       type: item.type || undefined,
       local: item.local || undefined,
     };

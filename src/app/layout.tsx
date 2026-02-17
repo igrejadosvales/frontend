@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { DM_Sans } from "next/font/google"; // Import DM Sans
-import { Header } from "@/components/layout/Header";
-import { Footer } from "@/components/layout/Footer";
+import { ConditionalLayout } from "@/components/layout/ConditionalLayout";
 import "./globals.css";
 
 const dmSans = DM_Sans({
@@ -106,7 +105,8 @@ export default function RootLayout({
                   "@id": "https://igrejadosvales.com.br/#website",
                   url: "https://igrejadosvales.com.br",
                   name: "Igreja dos Vales",
-                  description: "Uma comunidade de fé vibrante em Gravataí e Porto Alegre.",
+                  description:
+                    "Uma comunidade de fé vibrante em Gravataí e Porto Alegre.",
                   publisher: {
                     "@id": "https://igrejadosvales.com.br/#organization",
                   },
@@ -121,9 +121,7 @@ export default function RootLayout({
             }),
           }}
         />
-        <Header />
-        <main className="flex-1">{children}</main>
-        <Footer />
+        <ConditionalLayout>{children}</ConditionalLayout>
       </body>
     </html>
   );

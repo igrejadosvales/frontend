@@ -35,11 +35,11 @@ const GroupMap = dynamic(() => import("@/components/groups/GroupMap"), {
 
 const DAYS = [
   "Todos",
-  "Segunda",
-  "Terça",
-  "Quarta",
-  "Quinta",
-  "Sexta",
+  "Segunda-feira",
+  "Terça-feira",
+  "Quarta-feira",
+  "Quinta-feira",
+  "Sexta-feira",
   "Sábado",
   "Domingo",
   "Online",
@@ -89,7 +89,7 @@ export default function SmallGroupsSearch() {
   };
 
   return (
-    <div className="flex flex-col md:flex-row h-[calc(100vh-64px)] overflow-hidden bg-[#121212] relative">
+    <div className="flex flex-col md:flex-row h-[calc(100vh)] overflow-hidden bg-[#121212] relative">
       {/* Sidebar */}
       {/* Sidebar - relative container for sliding views */}
       <div
@@ -290,7 +290,7 @@ export default function SmallGroupsSearch() {
                   </div>
                 </div>
               </div>
-              <div className="mt-8 pt-6 border-t border-white/10 animate-in slide-in-from-bottom-8 fade-in duration-500 delay-200 shrink-0 h-full">
+              <div className="mt-8 pt-6 border-t border-white/10 animate-in slide-in-from-bottom-8 fade-in duration-500 delay-200 shrink-0">
                 <Button
                   className="w-full bg-green-600 hover:bg-green-500 text-white font-bold h-14 text-lg rounded-xl shadow-lg shadow-green-600/20 transition-all hover:scale-[1.02]"
                   onClick={() => {

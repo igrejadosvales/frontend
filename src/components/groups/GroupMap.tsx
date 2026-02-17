@@ -86,7 +86,6 @@ export default function GroupMap({
       );
       if (feature) {
         const group = feature.get("groupData") as SmallGroup;
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const geometry = feature.getGeometry() as any;
         const coordinates = geometry.getCoordinates();
 
@@ -126,7 +125,7 @@ export default function GroupMap({
     source.clear();
 
     const features = groups
-      .filter(g => g.coordinates !== null)
+      .filter((g) => g.coordinates !== null)
       .map((group) => {
         // Mock data is using [Lat, Lon] (Leaflet style)
         // OpenLayers uses [Lon, Lat]
