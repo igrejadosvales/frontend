@@ -39,9 +39,7 @@ export async function getSmallGroups(): Promise<SmallGroup[]> {
     return [];
   }
 
-  return ((data as unknown as GroupDB[]) || []).map((item) => {
-     
-    const raw = item as any;
+  const mappedGroups = ((data as unknown as GroupDB[]) || []).map((item) => {
     return {
       id: item.id,
       name: item.local || "Pequeno Grupo",
@@ -51,17 +49,16 @@ export async function getSmallGroups(): Promise<SmallGroup[]> {
       day: item.day || "Indefinido",
       time: item.hour || "",
       address: item.address || "",
-      // Use city or neighborhood from DB if available, otherwise default to Gravataí
-      neighborhood: raw.city || raw.neighborhood || "Gravataí",
-      region: raw.city || raw.region || "Gravataí", // Mapeamento da região
       coordinates:
         item.latitude && item.longitude
-          ? [item.latitude, item.longitude]
+          ? ([item.latitude, item.longitude] as [number, number])
           : null,
       type: item.type || undefined,
       local: item.local || undefined,
     };
   });
+
+  return mappedGroups;
 }
 
 export const SMALL_GROUPS: SmallGroup[] = [];

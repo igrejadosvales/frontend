@@ -61,8 +61,6 @@
   --gray-600: #202020;
 }
 
-
-
 @theme inline {
   --color-background: hsl(var(--background));
   --color-foreground: hsl(var(--foreground));
@@ -148,4 +146,26 @@ input:-webkit-autofill:active {
   -webkit-transition: background-color 5000s ease-in-out 0s;
   transition: background-color 5000s ease-in-out 0s;
   -webkit-text-fill-color: white !important;
+}
+
+select {
+  /* Remove seta padrão do navegador */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: none;
+}
+
+select option {
+  background-color: #1a1a1a;
+  color: white;
+  padding: 12px 16px;
+  border: none;
+  border-radius: 8px;
+  outline: none;
+}
+
+/* Remove outline branco do dropdown */
+select::-ms-expand {
+  display: none;
 }

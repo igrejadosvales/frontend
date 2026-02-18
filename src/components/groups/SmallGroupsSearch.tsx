@@ -7,13 +7,13 @@ import {
   ChevronLeft,
   User,
   Calendar,
-  Clock,
   MapPin,
   Users,
   Filter,
   MessageCircle,
   Map as MapIcon,
   List,
+  ChevronDown,
 } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { getSmallGroups, SmallGroup } from "@/lib/mock-pgs";
@@ -35,13 +35,24 @@ const GroupMap = dynamic(() => import("@/components/groups/GroupMap"), {
 
 const DAYS = [
   "Todos",
-  "Segunda-feira",
-  "Terça-feira",
-  "Quarta-feira",
-  "Quinta-feira",
-  "Sexta-feira",
+  "Segunda",
+  "Terça",
+  "Quarta",
+  "Quinta",
+  "Sexta",
   "Sábado",
   "Domingo",
+];
+
+const REGIONS = [
+  "Todas",
+  "Gravataí",
+  "Cachoeirinha",
+  "Porto Alegre",
+  "Viamão",
+  "Canoas",
+  "Itapema - SC",
+  "Glorinha",
   "Online",
 ];
 
@@ -50,6 +61,7 @@ export default function SmallGroupsSearch() {
   const [groups, setGroups] = useState<SmallGroup[]>([]);
   const [loading, setLoading] = useState(true);
   const [selectedDay, setSelectedDay] = useState("Todos");
+  const [selectedRegion, setSelectedRegion] = useState("Todas");
   const [selectedGroup, setSelectedGroup] = useState<SmallGroup | null>(null);
   const [openWhatsApp, setOpenWhatsApp] = useState(false);
   const [mobileView, setMobileView] = useState<"list" | "map">("list");
@@ -70,17 +82,47 @@ export default function SmallGroupsSearch() {
 
   const filteredGroups = useMemo(() => {
     return groups.filter((group) => {
+      // Busca expandida em todos os campos disponíveis
+      const searchLower = search.toLowerCase();
       const matchesSearch =
-        group.name.toLowerCase().includes(search.toLowerCase()) ||
+        search === "" ||
+        group.name.toLowerCase().includes(searchLower) ||
+        (group.leader && group.leader.toLowerCase().includes(searchLower)) ||
+        (group.supervisor &&
+          group.supervisor.toLowerCase().includes(searchLower)) ||
+        (group.phone && group.phone.toLowerCase().includes(searchLower)) ||
+        (group.day && group.day.toLowerCase().includes(searchLower)) ||
+        (group.time && group.time.toLowerCase().includes(searchLower)) ||
+        (group.address && group.address.toLowerCase().includes(searchLower)) ||
         (group.neighborhood &&
-          group.neighborhood.toLowerCase().includes(search.toLowerCase())) ||
-        group.leader.toLowerCase().includes(search.toLowerCase());
+          group.neighborhood.toLowerCase().includes(searchLower)) ||
+        (group.region && group.region.toLowerCase().includes(searchLower)) ||
+        (group.description &&
+          group.description.toLowerCase().includes(searchLower)) ||
+        (group.type && group.type.toLowerCase().includes(searchLower)) ||
+        (group.local && group.local.toLowerCase().includes(searchLower));
 
-      const matchesDay = selectedDay === "Todos" || group.day === selectedDay;
+      // Normalizar dia removendo acentos e convertendo para lowercase
+      const normalizeString = (str: string) =>
+        str
+          .toLowerCase()
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "")
+          .trim();
 
-      return matchesSearch && matchesDay;
+      const matchesDay =
+        selectedDay === "Todos" ||
+        normalizeString(group.day).includes(normalizeString(selectedDay)) ||
+        (selectedDay === "Online" &&
+          normalizeString(group.day).includes("online"));
+
+      const matchesRegion =
+        selectedRegion === "Todas" ||
+        normalizeString(group.region || "") === normalizeString(selectedRegion);
+
+      return matchesSearch && matchesDay && matchesRegion;
     });
-  }, [search, selectedDay, groups]);
+  }, [search, selectedDay, selectedRegion, groups]);
 
   const handleWhatsAppClick = (group: SmallGroup, e: React.MouseEvent) => {
     e.stopPropagation();
@@ -123,32 +165,60 @@ export default function SmallGroupsSearch() {
             <div className="relative group">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400 group-hover:text-primary transition-colors" />
               <Input
-                placeholder="Buscar por nome do Líder ou bairro..."
+                placeholder="Buscar por nome, líder, região, endereço..."
                 className="pl-10 bg-white/5 border-white/10 text-white placeholder:text-gray-500 focus-visible:ring-primary focus-visible:border-primary/50 h-10 transition-all hover:bg-white/10"
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
               />
             </div>
 
-            <div className="space-y-2">
-              <div className="flex items-center gap-2 text-xs font-semibold text-gray-400 uppercase tracking-wider">
-                <Filter className="w-3 h-3" /> Filtrar por dia
-              </div>
-              <div className="flex flex-wrap gap-2">
-                {DAYS.map((day) => (
-                  <button
-                    key={day}
-                    onClick={() => setSelectedDay(day)}
-                    className={cn(
-                      "px-3 py-1.5 rounded-full text-xs font-medium transition-all border",
-                      selectedDay === day
-                        ? "bg-primary text-white border-primary shadow-lg shadow-primary/20"
-                        : "bg-white/5 text-gray-400 border-white/5 hover:bg-white/10 hover:text-white hover:border-white/10",
-                    )}
+            <div className="grid grid-cols-2 gap-3">
+              <div className="space-y-2">
+                <label className="text-xs font-semibold text-gray-400 uppercase tracking-wider flex items-center gap-2">
+                  <Filter className="w-4 h-4" /> Dia
+                </label>
+                <div className="relative">
+                  <select
+                    value={selectedDay}
+                    onChange={(e) => setSelectedDay(e.target.value)}
+                    className="w-full pl-3 pr-10 py-2.5 rounded-lg bg-white/5 border border-white/10 text-white text-sm focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary transition-all hover:bg-white/10 hover:border-primary/50 cursor-pointer appearance-none"
                   >
-                    {day}
-                  </button>
-                ))}
+                    {DAYS.map((day) => (
+                      <option
+                        key={day}
+                        value={day}
+                        className="bg-[#1a1a1a] text-white py-2"
+                      >
+                        {day}
+                      </option>
+                    ))}
+                  </select>
+                  <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none" />
+                </div>
+              </div>
+
+              <div className="space-y-2">
+                <label className="text-xs font-semibold text-gray-400 uppercase tracking-wider flex items-center gap-2">
+                  <MapPin className="w-4 h-4" /> Região
+                </label>
+                <div className="relative">
+                  <select
+                    value={selectedRegion}
+                    onChange={(e) => setSelectedRegion(e.target.value)}
+                    className="w-full pl-3 pr-10 py-2.5 rounded-lg bg-white/5 border border-white/10 text-white text-sm focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary transition-all hover:bg-white/10 hover:border-primary/50 cursor-pointer appearance-none"
+                  >
+                    {REGIONS.map((region) => (
+                      <option
+                        key={region}
+                        value={region}
+                        className="bg-[#1a1a1a] text-white py-2"
+                      >
+                        {region}
+                      </option>
+                    ))}
+                  </select>
+                  <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none" />
+                </div>
               </div>
             </div>
           </div>
@@ -189,7 +259,7 @@ export default function SmallGroupsSearch() {
                         <div className="flex items-center gap-2 text-sm text-gray-400">
                           <MapPin className="w-4 h-4 shrink-0 text-gray-500 group-hover:text-primary/70 transition-colors" />
                           <span className="line-clamp-1">
-                            {group.neighborhood || "N/A"}
+                            {group.address || "N/A"}
                           </span>
                         </div>
                         <div className="flex items-center gap-2 text-sm text-gray-400">
