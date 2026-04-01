@@ -31,10 +31,7 @@ export default function SprintPage() {
             </a>
           </nav>
 
-          <a
-            href="#"
-            className="bg-lime-500 hover:bg-lime-600 text-white font-bold py-3 px-6 rounded text-xs sm:text-sm uppercase transition-colors shadow-md"
-          >
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSf7KKPlRusPMkqWpYgEmEYikUCRYU54dYu7WK19hQ9A0Ewitw/viewform" target="_blank" rel="noopener noreferrer" className="bg-lime-500 hover:bg-lime-600 text-white font-bold py-3 px-6 rounded text-xs sm:text-sm uppercase transition-colors shadow-md">
             INSCRIÇÕES 2026
           </a>
         </div>
@@ -403,10 +400,7 @@ export default function SprintPage() {
             esporte, fé e solidariedade. Junte-se a nós nesta missão de
             transformar vidas!
           </p>
-          <a
-            href="#"
-            className="bg-white hover:bg-gray-100 text-lime-500 font-bold py-4 px-10 rounded text-lg uppercase transition-colors shadow-lg"
-          >
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSf7KKPlRusPMkqWpYgEmEYikUCRYU54dYu7WK19hQ9A0Ewitw/viewform" target="_blank" rel="noopener noreferrer" className="bg-white hover:bg-gray-100 text-lime-500 font-bold py-4 px-10 rounded text-lg uppercase transition-colors shadow-lg">
             GARANTA SUA INSCRIÇÃO
           </a>
         </section>
