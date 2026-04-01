@@ -392,13 +392,11 @@ export default function SprintPage() {
 
         <section className="w-full py-24 px-4 bg-lime-500 text-white text-center flex flex-col items-center">
           <h2 className="text-3xl md:text-5xl font-black mb-6 uppercase">
-            SPRINT. UMA CORRIDA COM PROPÓSITO.
+            SPRINT - CORRA COM PROPÓSITO
           </h2>
           <p className="text-xl md:text-2xl font-light mb-12 max-w-4xl mx-auto">
-            Mais do que cruzar a linha de chegada, nosso objetivo é ajudar o
-            próximo. Um evento promovido pela Igreja dos Vales para unir
-            esporte, fé e solidariedade. Junte-se a nós nesta missão de
-            transformar vidas!
+            Seu corpo é a ferramenta para o mover do Espírito.
+            Um evento da Igreja do Vales para unir esporte e fé com um propósito real: edificar o corpo, a alma e o espírito.
           </p>
           <a href="https://docs.google.com/forms/d/e/1FAIpQLSf7KKPlRusPMkqWpYgEmEYikUCRYU54dYu7WK19hQ9A0Ewitw/viewform" target="_blank" rel="noopener noreferrer" className="bg-white hover:bg-gray-100 text-lime-500 font-bold py-4 px-10 rounded text-lg uppercase transition-colors shadow-lg">
             GARANTA SUA INSCRIÇÃO
