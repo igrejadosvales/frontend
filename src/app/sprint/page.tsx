@@ -31,7 +31,12 @@ export default function SprintPage() {
             </a>
           </nav>
 
-          <a href="https://docs.google.com/forms/d/e/1FAIpQLSf7KKPlRusPMkqWpYgEmEYikUCRYU54dYu7WK19hQ9A0Ewitw/viewform" target="_blank" rel="noopener noreferrer" className="bg-lime-500 hover:bg-lime-600 text-white font-bold py-3 px-6 rounded text-xs sm:text-sm uppercase transition-colors shadow-md">
+          <a
+            href="https://docs.google.com/forms/d/e/1FAIpQLSf7KKPlRusPMkqWpYgEmEYikUCRYU54dYu7WK19hQ9A0Ewitw/viewform"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-lime-500 hover:bg-lime-600 text-white font-bold py-3 px-6 rounded text-xs sm:text-sm uppercase transition-colors shadow-md"
+          >
             INSCRIÇÕES 2026
           </a>
         </div>
@@ -71,112 +76,141 @@ export default function SprintPage() {
               <div className="w-24 h-1 bg-lime-500 mx-auto mt-6"></div>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-              <div className="bg-neutral-50 rounded-xl p-8 border border-neutral-100 shadow-sm flex flex-col items-center text-center hover:shadow-md transition-shadow">
-                <div className="w-16 h-16 bg-lime-100 text-lime-600 rounded-full flex items-center justify-center mb-6">
-                  <svg
-                    className="w-8 h-8"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-                    ></path>
-                  </svg>
+            <div className="flex flex-col gap-8">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
+                <div className="bg-neutral-50 rounded-xl p-8 border border-neutral-100 shadow-sm flex flex-col items-center text-center hover:shadow-md transition-shadow">
+                  <div className="w-16 h-16 bg-lime-100 text-lime-600 rounded-full flex items-center justify-center mb-6">
+                    <svg
+                      className="w-8 h-8"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                      ></path>
+                    </svg>
+                  </div>
+                  <h3 className="text-gray-500 text-xs sm:text-sm font-bold uppercase mb-2">
+                    Data da Corrida
+                  </h3>
+                  <p className="text-2xl sm:text-3xl font-black text-gray-800">
+                    11 de Abril
+                  </p>
                 </div>
-                <h3 className="text-gray-500 text-xs sm:text-sm font-bold uppercase mb-2">
-                  Data da Corrida
-                </h3>
-                <p className="text-2xl sm:text-3xl font-black text-gray-800">
-                  11 de Abril
-                </p>
+
+                <div className="bg-neutral-50 rounded-xl p-8 border border-neutral-100 shadow-sm flex flex-col items-center text-center hover:shadow-md transition-shadow">
+                  <div className="w-16 h-16 bg-lime-100 text-lime-600 rounded-full flex items-center justify-center mb-6">
+                    <svg
+                      className="w-8 h-8"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                      ></path>
+                    </svg>
+                  </div>
+                  <h3 className="text-gray-500 text-xs sm:text-sm font-bold uppercase mb-2">
+                    Concentração
+                  </h3>
+                  <p className="text-2xl sm:text-3xl font-black text-gray-800">
+                    07:00
+                  </p>
+                </div>
+
+                <div className="bg-neutral-50 rounded-xl p-8 border border-neutral-100 shadow-sm flex flex-col items-center text-center hover:shadow-md transition-shadow">
+                  <div className="w-16 h-16 bg-lime-100 text-lime-600 rounded-full flex items-center justify-center mb-6">
+                    <svg
+                      className="w-8 h-8"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"
+                      ></path>
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                      ></path>
+                    </svg>
+                  </div>
+                  <h3 className="text-gray-500 text-xs sm:text-sm font-bold uppercase mb-2">
+                    Largada
+                  </h3>
+                  <p className="text-2xl sm:text-3xl font-black text-gray-800">
+                    07:30
+                  </p>
+                </div>
               </div>
 
-              <div className="bg-neutral-50 rounded-xl p-8 border border-neutral-100 shadow-sm flex flex-col items-center text-center hover:shadow-md transition-shadow">
-                <div className="w-16 h-16 bg-lime-100 text-lime-600 rounded-full flex items-center justify-center mb-6">
-                  <svg
-                    className="w-8 h-8"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-                    ></path>
-                  </svg>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-3xl mx-auto w-full">
+                <div className="bg-neutral-50 rounded-xl p-8 border border-neutral-100 shadow-sm flex flex-col items-center text-center hover:shadow-md transition-shadow">
+                  <div className="w-16 h-16 bg-lime-100 text-lime-600 rounded-full flex items-center justify-center mb-6">
+                    <svg
+                      className="w-8 h-8"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="M13 10V3L4 14h7v7l9-11h-7z"
+                      ></path>
+                    </svg>
+                  </div>
+                  <h3 className="text-gray-500 text-xs sm:text-sm font-bold uppercase mb-2">
+                    Quilometragem
+                  </h3>
+                  <p className="text-2xl sm:text-3xl font-black text-gray-800">
+                    4.800m
+                  </p>
+                  <span className="text-gray-500 font-medium">(3 Milhas)</span>
                 </div>
-                <h3 className="text-gray-500 text-xs sm:text-sm font-bold uppercase mb-2">
-                  Concentração
-                </h3>
-                <p className="text-2xl sm:text-3xl font-black text-gray-800">
-                  07:00
-                </p>
-              </div>
 
-              <div className="bg-neutral-50 rounded-xl p-8 border border-neutral-100 shadow-sm flex flex-col items-center text-center hover:shadow-md transition-shadow">
-                <div className="w-16 h-16 bg-lime-100 text-lime-600 rounded-full flex items-center justify-center mb-6">
-                  <svg
-                    className="w-8 h-8"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"
-                    ></path>
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                    ></path>
-                  </svg>
+                <div className="bg-neutral-50 rounded-xl p-8 border border-neutral-100 shadow-sm flex flex-col items-center text-center hover:shadow-md transition-shadow">
+                  <div className="w-16 h-16 bg-lime-100 text-lime-600 rounded-full flex items-center justify-center mb-6">
+                    <svg
+                      className="w-8 h-8"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+                      ></path>
+                    </svg>
+                  </div>
+                  <h3 className="text-gray-500 text-xs sm:text-sm font-bold uppercase mb-2">
+                    Inscrição
+                  </h3>
+                  <p className="text-lg sm:text-xl font-black text-gray-800">
+                    1kg de Alimento
+                  </p>
                 </div>
-                <h3 className="text-gray-500 text-xs sm:text-sm font-bold uppercase mb-2">
-                  Largada
-                </h3>
-                <p className="text-2xl sm:text-3xl font-black text-gray-800">
-                  07:30
-                </p>
-              </div>
-
-              <div className="bg-neutral-50 rounded-xl p-8 border border-neutral-100 shadow-sm flex flex-col items-center text-center hover:shadow-md transition-shadow">
-                <div className="w-16 h-16 bg-lime-100 text-lime-600 rounded-full flex items-center justify-center mb-6">
-                  <svg
-                    className="w-8 h-8"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M13 10V3L4 14h7v7l9-11h-7z"
-                    ></path>
-                  </svg>
-                </div>
-                <h3 className="text-gray-500 text-xs sm:text-sm font-bold uppercase mb-2">
-                  Quilometragem
-                </h3>
-                <p className="text-2xl sm:text-3xl font-black text-gray-800">
-                  4.800m
-                </p>
-                <span className="text-gray-500 font-medium">(3 Milhas)</span>
               </div>
             </div>
           </div>
@@ -218,12 +252,10 @@ export default function SprintPage() {
                     </svg>
                   </div>
                   <h3 className="text-xl sm:text-2xl font-black text-gray-800 uppercase leading-tight">
-                    Gazebos{" "}
-                    <span className="text-lime-600 text-base sm:text-lg block sm:inline mt-1 sm:mt-0">
-                      (3 unidades)
-                    </span>
+                    Retirada de Kits
                   </h3>
                 </div>
+
                 <ul className="space-y-4">
                   <li className="flex items-center gap-3 text-base sm:text-lg text-gray-700 font-medium">
                     <svg
@@ -240,7 +272,7 @@ export default function SprintPage() {
                         d="M5 13l4 4L19 7"
                       ></path>
                     </svg>
-                    Entrega de kits
+                    Kits entregues presencialmente
                   </li>
                   <li className="flex items-center gap-3 text-base sm:text-lg text-gray-700 font-medium">
                     <svg
@@ -257,24 +289,7 @@ export default function SprintPage() {
                         d="M5 13l4 4L19 7"
                       ></path>
                     </svg>
-                    Entrega de comida e água
-                  </li>
-                  <li className="flex items-center gap-3 text-base sm:text-lg text-gray-700 font-medium">
-                    <svg
-                      className="w-6 h-6 text-green-500 shrink-0"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="3"
-                        d="M5 13l4 4L19 7"
-                      ></path>
-                    </svg>
-                    Enfermagem
+                    Leve seu 1kg de alimento na hora
                   </li>
                 </ul>
               </div>
@@ -370,13 +385,13 @@ export default function SprintPage() {
               </h2>
               <div className="w-24 h-1 bg-lime-500 mx-auto mt-6"></div>
               <p className="mt-6 text-lg md:text-xl text-gray-600 max-w-2xl mx-auto font-bold">
-                Av. João Benjamin Zaffari
+                Av. João Benjamin Zaffari, Gravataí
               </p>
             </div>
 
             <div className="w-full max-w-5xl mx-auto rounded-xl sm:rounded-3xl overflow-hidden shadow-2xl border border-gray-200 h-[350px] sm:h-[500px] relative bg-gray-100">
               <iframe
-                src="https://maps.google.com/maps?q=AV.%20JO%C3%83O%20BENJAMIN%20ZAFFARI&t=&z=16&ie=UTF8&iwloc=&output=embed"
+                src="https://maps.google.com/maps?q=AV.%20JO%C3%83O%20BENJAMIN%20ZAFFARI,%20Gravata%C3%AD&t=&z=16&ie=UTF8&iwloc=&output=embed"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
@@ -395,10 +410,20 @@ export default function SprintPage() {
             SPRINT - CORRA COM PROPÓSITO
           </h2>
           <p className="text-xl md:text-2xl font-light mb-12 max-w-4xl mx-auto">
-            Seu corpo é a ferramenta para o mover do Espírito.
-            Um evento da Igreja do Vales para unir esporte e fé com um propósito real: edificar o corpo, a alma e o espírito.
+            Seu corpo é a ferramenta para o mover do Espírito. Um evento da
+            Igreja do Vales para unir esporte e fé com um propósito real:
+            edificar o corpo, a alma e o espírito.
+            <br />
+            <br />
+            <strong className="font-bold">Inscrição solidária:</strong> 1kg de
+            alimento não perecível.
           </p>
-          <a href="https://docs.google.com/forms/d/e/1FAIpQLSf7KKPlRusPMkqWpYgEmEYikUCRYU54dYu7WK19hQ9A0Ewitw/viewform" target="_blank" rel="noopener noreferrer" className="bg-white hover:bg-gray-100 text-lime-500 font-bold py-4 px-10 rounded text-lg uppercase transition-colors shadow-lg">
+          <a
+            href="https://docs.google.com/forms/d/e/1FAIpQLSf7KKPlRusPMkqWpYgEmEYikUCRYU54dYu7WK19hQ9A0Ewitw/viewform"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-white hover:bg-gray-100 text-lime-500 font-bold py-4 px-10 rounded text-lg uppercase transition-colors shadow-lg"
+          >
             GARANTA SUA INSCRIÇÃO
           </a>
         </section>
