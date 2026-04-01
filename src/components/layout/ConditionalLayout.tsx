@@ -6,7 +6,7 @@ import { Footer } from "./Footer";
 
 export function ConditionalLayout({ children }: { children: ReactNode }) {
   const pathname = usePathname();
-  const hideHeaderFooter = pathname === "/igrupos";
+  const hideHeaderFooter = pathname === "/igrupos" || pathname === "/sprint";
 
   return (
     <>
